@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Connecting TikTok…</title>
+<style>body{margin:0;background:#10150f;color:#efe9dc;font:16px/1.6 -apple-system,system-ui,sans-serif;display:grid;place-items:center;min-height:100vh}p{color:#b8b2a4}</style>
+</head><body><main><p>Connecting TikTok to Hunt Logic Clips…</p></main>
+<script>
+// TikTok only returns sign-ins to https pages. This page hands the code straight to Hunt Logic
+// Clips, which runs on the owner's own computer. Nothing is stored or sent anywhere else.
+location.replace("http://localhost:3210/api/connect/tiktok/callback" + location.search);
+</script></body></html>
