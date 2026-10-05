@@ -33,48 +33,47 @@ img{display:block;max-width:100%}
 a{color:var(--ink)}
 :focus-visible{outline:3px solid var(--ember);outline-offset:3px}
 
-/* Hero: the ridge at first light, stamped like a trail-camera frame. */
-.hero{position:relative;min-height:88vh;min-height:88svh;display:flex;align-items:flex-end;overflow:hidden}
-.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,16,0) 30%,rgba(14,19,16,.55) 60%,var(--ground) 100%)}
+/* Hero: the ridge at first light, stamped like a trail-camera frame, with the sign-up on it. */
+.hero{position:relative;overflow:hidden;padding-top:min(34vh,300px)}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 25%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,16,0) 0%,rgba(14,19,16,.35) 30%,rgba(14,19,16,.82) 55%,var(--ground) 100%)}
 .stamp{position:absolute;z-index:2;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;font-family:"VT323",ui-monospace,monospace;font-size:20px;letter-spacing:.5px;color:rgba(236,231,219,.88);text-shadow:0 1px 2px rgba(0,0,0,.8)}
-.hero-copy{position:relative;z-index:2;width:100%;max-width:640px;margin:0 auto;padding:0 20px 34px}
-.mark{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-weight:600;font-size:17px;letter-spacing:.2px}
-.mark img{width:34px;height:34px;border-radius:8px}
-h1{font-weight:700;font-size:clamp(40px,10.5vw,68px);line-height:.98;letter-spacing:-.02em;margin:0 0 16px;font-variation-settings:"opsz" 72;max-width:12ch}
-.lede{font-size:21px;color:var(--ink);margin:0;max-width:30ch}
+.hero-copy{position:relative;z-index:2;width:100%;max-width:640px;margin:0 auto;padding:0 16px 28px}
+.mark{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:600;font-size:17px;letter-spacing:.2px}
+.mark img{width:30px;height:30px;border-radius:7px}
+h1{font-weight:700;font-size:clamp(34px,9vw,64px);line-height:1;letter-spacing:-.02em;margin:0 0 10px;font-variation-settings:"opsz" 72;max-width:13ch}
+.platforms{margin:0 0 16px;font-size:19px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.plat{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.logo{width:1.05em;height:1.05em;flex:none}
 
-/* The blaze band: the one loud thing on the page. */
-.band{background:var(--blaze);color:var(--blaze-ink)}
-.band-inner{max-width:640px;margin:0 auto;padding:30px 20px 34px}
-.band h2{font-size:28px;line-height:1.1;margin:0 0 6px;font-weight:700}
-.band p{margin:0 0 18px;font-size:18px}
-form{display:grid;gap:12px}
-label.email span{display:block;font-size:16px;font-weight:600;margin-bottom:6px}
-input[type=email]{width:100%;font:inherit;font-size:19px;padding:14px 16px;border:2px solid var(--blaze-ink);border-radius:10px;background:#FFF7F0;color:var(--blaze-ink)}
+/* The blaze card: the one loud thing on the page. */
+.card{background:var(--blaze);color:var(--blaze-ink);border-radius:14px;padding:16px 16px 14px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.card h2{font-size:22px;line-height:1.15;margin:0 0 10px;font-weight:700}
+form{display:grid;gap:10px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.row{display:flex;gap:8px}
+input[type=email]{flex:1;min-width:0;font:inherit;font-size:18px;padding:13px 14px;border:2px solid var(--blaze-ink);border-radius:10px;background:#FFF7F0;color:var(--blaze-ink)}
 input[type=email]::placeholder{color:#7A5A47}
-fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
-legend{font-size:16px;font-weight:600;margin-bottom:6px;padding:0}
+fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
 .pick{position:relative}
 .pick input{position:absolute;opacity:0;width:1px;height:1px}
-.pick span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:2px solid var(--blaze-ink);border-radius:999px;font-size:18px;font-weight:600;cursor:pointer;user-select:none}
-.pick span::before{content:"";width:16px;height:16px;border:2px solid var(--blaze-ink);border-radius:4px;flex:none}
-.pick input:checked+span{background:var(--blaze-ink);color:var(--blaze)}
-.pick input:checked+span::before{background:var(--blaze);border-color:var(--blaze);box-shadow:inset 0 0 0 3px var(--blaze-ink)}
+.pick span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:2px solid var(--blaze-ink);border-radius:999px;font-size:17px;font-weight:600;cursor:pointer;user-select:none}
+.pick input:checked+span{background:var(--blaze-ink);color:#FFF1E6}
 .pick input:focus-visible+span{outline:3px solid var(--blaze-ink);outline-offset:3px}
-button{font:inherit;font-size:20px;font-weight:700;padding:15px 18px;border:0;border-radius:10px;background:var(--blaze-ink);color:#FFF1E6;cursor:pointer}
+button{font:inherit;font-size:18px;font-weight:700;padding:13px 16px;border:0;border-radius:10px;background:var(--blaze-ink);color:#FFF1E6;cursor:pointer;white-space:nowrap}
 button:hover{background:#000}
 button[disabled]{opacity:.6;cursor:progress}
-.fine{font-size:15px;margin:2px 0 0}
+.opt{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.35;cursor:pointer}
+.opt input{width:19px;height:19px;margin:1px 0 0;accent-color:var(--blaze-ink);flex:none}
+.fine{font-size:13.5px;line-height:1.4;margin:0}
 .fine a{color:var(--blaze-ink)}
-.msg{font-size:17px;font-weight:600;margin:0}
+.msg{font-size:16px;font-weight:600;margin:0}
 .msg:empty{display:none}
 .hp{position:absolute;left:-9999px}
-.opt{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.4;cursor:pointer}
-.opt input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--blaze-ink);flex:none}
-.done h2{font-size:30px}
-.share{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.share button{font-size:17px;padding:11px 16px}
+.done h2{font-size:26px}
+.done p{margin:0 0 4px;font-size:17px}
+.share{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.share button{font-size:16px;padding:10px 14px}
 
 /* What it does: the app's own art, quiet around it. */
 .what{max-width:640px;margin:0 auto;padding:46px 20px 10px}
@@ -99,7 +98,9 @@ footer a{color:var(--fog)}
 
 @media (min-width:760px){
   .stamp{left:28px;right:28px;top:20px;font-size:24px}
-  .hero-copy{padding-bottom:48px}
+  .hero{padding-top:min(30vh,280px)}
+  .hero-copy{padding:0 20px 44px}
+  .card{padding:20px 20px 16px}
 }
 @media (prefers-reduced-motion:no-preference){
   .hero picture img{animation:light 2.4s ease-out both}
@@ -118,31 +119,29 @@ footer a{color:var(--fog)}
   <div class="hero-copy">
     <div class="mark"><img src="../img/icon.png" alt="">Hunt Logic</div>
     <h1>Know which stand to sit before first light.</h1>
-    <p class="lede">The wind, your leave time and where deer are likely to move, worked out for your own ground. Coming to iPhone and Android.</p>
+    <p class="platforms">Coming to <span class="plat"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>iPhone</span> and <span class="plat"><svg class="logo" viewBox="1.5 3.5 21 15" aria-hidden="true" style="width:1.35em"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Android</span></p>
+
+    <div class="card" id="signup">
+      <form id="form" novalidate aria-labelledby="signup-title">
+        <h2 id="signup-title">Get one email the day it&rsquo;s out</h2>
+        <div class="row">
+          <label class="sr" for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+          <button type="submit" id="submit">Notify me</button>
+        </div>
+        <fieldset>
+          <legend class="sr">Which phone?</legend>
+          <label class="pick"><input type="checkbox" name="platform" value="ios"><span><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>iPhone</span></label>
+          <label class="pick"><input type="checkbox" name="platform" value="android"><span><svg class="logo" viewBox="1.5 3.5 21 15" aria-hidden="true" style="width:1.35em"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Android</span></label>
+        </fieldset>
+        <label class="opt"><input type="checkbox" name="marketing" id="marketing"><span>Also email me hunting-season deals and new apps from Go Forth Labs. Unsubscribe anytime.</span></label>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+        <p class="fine">Without that box, you get the launch email and nothing else. We never sell or share your address. <a href="../privacy/">Privacy</a></p>
+      </form>
+    </div>
   </div>
 </header>
-
-<section class="band" aria-labelledby="signup-title">
-  <div class="band-inner" id="signup">
-    <h2 id="signup-title">Get the launch email</h2>
-    <p>One email the day Hunt Logic is in the App Store and on Google Play.</p>
-    <form id="form" novalidate>
-      <label class="email"><span>Email</span>
-        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
-      </label>
-      <fieldset>
-        <legend>Which phone?</legend>
-        <label class="pick"><input type="checkbox" name="platform" value="ios"><span>iPhone</span></label>
-        <label class="pick"><input type="checkbox" name="platform" value="android"><span>Android</span></label>
-      </fieldset>
-      <label class="opt"><input type="checkbox" name="marketing" id="marketing"><span>Also email me hunting-season deals and new apps from Go Forth Labs. Unsubscribe anytime.</span></label>
-      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit" id="submit">Notify me at launch</button>
-      <p class="msg" id="msg" role="status" aria-live="polite"></p>
-      <p class="fine">Without the box above, you get the launch email and nothing else. We never sell or share your address. <a href="../privacy/">Privacy policy</a></p>
-    </form>
-  </div>
-</section>
 
 <section class="what" aria-labelledby="what-title">
   <h2 id="what-title">What it does</h2>
