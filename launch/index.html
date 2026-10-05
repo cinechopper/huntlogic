@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hunt Logic — get the launch email</title>
+<meta name="description" content="Hunt Logic is coming to iPhone and Android: which stand fits the wind, when to leave, and where deer are likely to move. Get one email the day it's out.">
+<meta property="og:title" content="Hunt Logic is coming to iPhone and Android">
+<meta property="og:description" content="Know which stand to sit before first light. Get one email the day it's out.">
+<meta property="og:image" content="https://cinechopper.github.io/huntlogic/launch/img/og.jpg">
+<meta property="og:url" content="https://cinechopper.github.io/huntlogic/launch/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1310">
+<link rel="icon" href="../img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0E1310;   /* pre-dawn timber */
+  --field:#1D2721;    /* lifted surface */
+  --ink:#ECE7DB;      /* bone */
+  --fog:#A7B2A5;      /* secondary text, 7:1 on ground */
+  --blaze:#FF6A2B;    /* hunter orange */
+  --blaze-ink:#1A0C04;/* text on blaze, 9:1 */
+  --ember:#E9B44C;    /* first light */
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.55;font-optical-sizing:auto}
+img{display:block;max-width:100%}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px}
+
+/* Hero: the ridge at first light, stamped like a trail-camera frame. */
+.hero{position:relative;min-height:88vh;min-height:88svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,16,0) 30%,rgba(14,19,16,.55) 60%,var(--ground) 100%)}
+.stamp{position:absolute;z-index:2;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;font-family:"VT323",ui-monospace,monospace;font-size:20px;letter-spacing:.5px;color:rgba(236,231,219,.88);text-shadow:0 1px 2px rgba(0,0,0,.8)}
+.hero-copy{position:relative;z-index:2;width:100%;max-width:640px;margin:0 auto;padding:0 20px 34px}
+.mark{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-weight:600;font-size:17px;letter-spacing:.2px}
+.mark img{width:34px;height:34px;border-radius:8px}
+h1{font-weight:700;font-size:clamp(40px,10.5vw,68px);line-height:.98;letter-spacing:-.02em;margin:0 0 16px;font-variation-settings:"opsz" 72;max-width:12ch}
+.lede{font-size:21px;color:var(--ink);margin:0;max-width:30ch}
+
+/* The blaze band: the one loud thing on the page. */
+.band{background:var(--blaze);color:var(--blaze-ink)}
+.band-inner{max-width:640px;margin:0 auto;padding:30px 20px 34px}
+.band h2{font-size:28px;line-height:1.1;margin:0 0 6px;font-weight:700}
+.band p{margin:0 0 18px;font-size:18px}
+form{display:grid;gap:12px}
+label.email span{display:block;font-size:16px;font-weight:600;margin-bottom:6px}
+input[type=email]{width:100%;font:inherit;font-size:19px;padding:14px 16px;border:2px solid var(--blaze-ink);border-radius:10px;background:#FFF7F0;color:var(--blaze-ink)}
+input[type=email]::placeholder{color:#7A5A47}
+fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+legend{font-size:16px;font-weight:600;margin-bottom:6px;padding:0}
+.pick{position:relative}
+.pick input{position:absolute;opacity:0;width:1px;height:1px}
+.pick span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:2px solid var(--blaze-ink);border-radius:999px;font-size:18px;font-weight:600;cursor:pointer;user-select:none}
+.pick span::before{content:"";width:16px;height:16px;border:2px solid var(--blaze-ink);border-radius:4px;flex:none}
+.pick input:checked+span{background:var(--blaze-ink);color:var(--blaze)}
+.pick input:checked+span::before{background:var(--blaze);border-color:var(--blaze);box-shadow:inset 0 0 0 3px var(--blaze-ink)}
+.pick input:focus-visible+span{outline:3px solid var(--blaze-ink);outline-offset:3px}
+button{font:inherit;font-size:20px;font-weight:700;padding:15px 18px;border:0;border-radius:10px;background:var(--blaze-ink);color:#FFF1E6;cursor:pointer}
+button:hover{background:#000}
+button[disabled]{opacity:.6;cursor:progress}
+.fine{font-size:15px;margin:2px 0 0}
+.fine a{color:var(--blaze-ink)}
+.msg{font-size:17px;font-weight:600;margin:0}
+.msg:empty{display:none}
+.hp{position:absolute;left:-9999px}
+.opt{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.4;cursor:pointer}
+.opt input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--blaze-ink);flex:none}
+.done h2{font-size:30px}
+.share{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.share button{font-size:17px;padding:11px 16px}
+
+/* What it does: the app's own art, quiet around it. */
+.what{max-width:640px;margin:0 auto;padding:46px 20px 10px}
+.what h2,.follow h2{font-size:30px;line-height:1.1;margin:0 0 10px;font-weight:700}
+.what>p{color:var(--fog);margin:0 0 22px;max-width:34ch}
+.art{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.art figure{margin:0}
+.art img{border-radius:16px;width:100%;height:auto;background:var(--field)}
+.art figcaption{font-size:17px;color:var(--fog);margin-top:10px;line-height:1.4}
+.art figcaption strong{color:var(--ink);display:block;font-size:19px}
+.more{list-style:none;padding:0;margin:28px 0 0;border-top:1px solid rgba(236,231,219,.12)}
+.more li{padding:14px 0;border-bottom:1px solid rgba(236,231,219,.12);color:var(--fog)}
+.more strong{color:var(--ink);font-weight:600}
+
+.follow{max-width:640px;margin:0 auto;padding:40px 20px 20px}
+.follow p{color:var(--fog);margin:0 0 16px}
+.socials{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.socials a{display:inline-block;padding:10px 16px;border:1.5px solid rgba(236,231,219,.35);border-radius:999px;text-decoration:none;font-size:17px}
+.socials a:hover{border-color:var(--ember);color:var(--ember)}
+footer{max-width:640px;margin:0 auto;padding:30px 20px 50px;font-size:15px;color:var(--fog)}
+footer a{color:var(--fog)}
+
+@media (min-width:760px){
+  .stamp{left:28px;right:28px;top:20px;font-size:24px}
+  .hero-copy{padding-bottom:48px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero picture img{animation:light 2.4s ease-out both}
+  @keyframes light{from{filter:brightness(.55) saturate(.8)}to{filter:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <picture>
+    <source media="(min-width:760px)" srcset="img/hero-wide.webp">
+    <img src="img/hero-tall.webp" alt="A whitetail buck on a ridge above a misty valley at sunrise">
+  </picture>
+  <div class="stamp" aria-hidden="true"><span>CAM 01</span><span id="stamp">--/--/---- --:--:-- AM</span></div>
+  <div class="hero-copy">
+    <div class="mark"><img src="../img/icon.png" alt="">Hunt Logic</div>
+    <h1>Know which stand to sit before first light.</h1>
+    <p class="lede">The wind, your leave time and where deer are likely to move, worked out for your own ground. Coming to iPhone and Android.</p>
+  </div>
+</header>
+
+<section class="band" aria-labelledby="signup-title">
+  <div class="band-inner" id="signup">
+    <h2 id="signup-title">Get the launch email</h2>
+    <p>One email the day Hunt Logic is in the App Store and on Google Play.</p>
+    <form id="form" novalidate>
+      <label class="email"><span>Email</span>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+      </label>
+      <fieldset>
+        <legend>Which phone?</legend>
+        <label class="pick"><input type="checkbox" name="platform" value="ios"><span>iPhone</span></label>
+        <label class="pick"><input type="checkbox" name="platform" value="android"><span>Android</span></label>
+      </fieldset>
+      <label class="opt"><input type="checkbox" name="marketing" id="marketing"><span>Also email me hunting-season deals and new apps from Go Forth Labs. Unsubscribe anytime.</span></label>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" id="submit">Notify me at launch</button>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      <p class="fine">Without the box above, you get the launch email and nothing else. We never sell or share your address. <a href="../privacy/">Privacy policy</a></p>
+    </form>
+  </div>
+</section>
+
+<section class="what" aria-labelledby="what-title">
+  <h2 id="what-title">What it does</h2>
+  <p>Built by a hunter for the sit you're planning tonight, not a map you have to read for an hour.</p>
+  <div class="art">
+    <figure>
+      <img src="img/scout-scan.webp" alt="Scout Scan marking a potential buck bed, a saddle, a pinch point and travel corridors on an aerial map" loading="lazy">
+      <figcaption><strong>Scout Scan</strong>Likely beds, saddles and pinch points, and why each one.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/stand-math.webp" alt="A leave time of 4:40 AM worked back through the drive, the hike and setup" loading="lazy">
+      <figcaption><strong>No more stand math</strong>A leave time worked back from legal light.</figcaption>
+    </figure>
+  </div>
+  <ul class="more">
+    <li><strong>Wind and thermals.</strong> See where your scent goes from the stand and on the walk in.</li>
+    <li><strong>Movement forecast.</strong> Morning and evening outlooks that know the rut and the weather.</li>
+    <li><strong>Hunt Party.</strong> Share locations and sightings with your group, iPhone and Android together.</li>
+    <li><strong>Recovery.</strong> Read the shot, then mark blood on a trail map.</li>
+  </ul>
+</section>
+
+<section class="follow" aria-labelledby="follow-title">
+  <h2 id="follow-title">Follow along</h2>
+  <p>Tactics clips and the countdown to launch.</p>
+  <ul class="socials">
+    <li><a href="https://www.tiktok.com/@huntlogic">TikTok</a></li>
+    <li><a href="https://www.instagram.com/gethuntlogic">Instagram</a></li>
+    <li><a href="https://www.youtube.com/@HuntLogic">YouTube</a></li>
+    <li><a href="https://www.facebook.com/gethuntlogic">Facebook</a></li>
+    <li><a href="https://x.com/gethuntlogic">X</a></li>
+  </ul>
+</section>
+
+<footer>Hunt Logic by Go Forth Labs. <a href="../">Home</a> · <a href="../support/">Support</a> · <a href="../privacy/">Privacy</a></footer>
+
+<script>
+// Trail-camera stamp from the visitor's own clock.
+(function(){
+  var el=document.getElementById('stamp');
+  function pad(n){return n<10?'0'+n:''+n}
+  function tick(){
+    var d=new Date(),h=d.getHours(),ap=h<12?'AM':'PM';h=h%12||12;
+    el.textContent=pad(d.getMonth()+1)+'/'+pad(d.getDate())+'/'+d.getFullYear()+'  '+pad(h)+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())+' '+ap;
+  }
+  tick();setInterval(tick,1000);
+})();
+
+// Signup: one Firestore doc per email (id = sha256 of the lowercased address), create-only.
+(function(){
+  var KEY='AIzaSyB7RHNhsVd5EzpEXi_OUopVuKIyajyyW3Q';
+  var BASE='https://firestore.googleapis.com/v1/projects/hunt-logic-app/databases/(default)/documents/waitlist';
+  var form=document.getElementById('form'),msg=document.getElementById('msg'),btn=document.getElementById('submit');
+  var q=new URLSearchParams(location.search);
+  var source=(q.get('utm_source')||q.get('s')||q.get('ref')||(document.referrer?new URL(document.referrer).hostname:'direct')).slice(0,40);
+  var ua=navigator.userAgent;
+  if(/iPhone|iPad|iPod/.test(ua))form.querySelector('[value=ios]').checked=true;
+  else if(/Android/.test(ua))form.querySelector('[value=android]').checked=true;
+
+  async function sha256(s){
+    var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
+  }
+  function done(){
+    var band=document.getElementById('signup');
+    band.classList.add('done');
+    band.innerHTML='<h2 tabindex="-1" id="ok">You’re on the list.</h2><p>We’ll email you once, the day Hunt Logic is out. Know a hunter who’d use it?</p><div class="share"><button type="button" id="share">Share this page</button><button type="button" id="copy">Copy link</button></div><p class="msg" id="msg2" role="status" aria-live="polite"></p>';
+    document.getElementById('ok').focus();
+    var url='https://cinechopper.github.io/huntlogic/launch/';
+    var s=document.getElementById('share');
+    if(navigator.share)s.onclick=function(){navigator.share({title:'Hunt Logic',text:'Hunt Logic is coming to iPhone and Android.',url:url}).catch(function(){})};
+    else s.remove();
+    document.getElementById('copy').onclick=function(){
+      navigator.clipboard.writeText(url).then(function(){document.getElementById('msg2').textContent='Link copied.'},function(){document.getElementById('msg2').textContent=url});
+    };
+  }
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(form.website.value)return; // bot filled the hidden field
+    var email=form.email.value.trim().toLowerCase();
+    var platforms=Array.from(form.querySelectorAll('[name=platform]:checked')).map(function(c){return c.value});
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Enter an email address, like you@example.com.';form.email.focus();return}
+    if(!platforms.length){msg.textContent='Pick iPhone, Android, or both.';return}
+    btn.disabled=true;msg.textContent='Adding you…';
+    try{
+      var id=await sha256(email);
+      var body={fields:{email:{stringValue:email},platforms:{arrayValue:{values:platforms.map(function(p){return{stringValue:p}})}},source:{stringValue:source},marketing:{booleanValue:form.marketing.checked},at:{timestampValue:new Date().toISOString()}}};
+      var r=await fetch(BASE+'?documentId='+id+'&key='+KEY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      if(r.ok||r.status===409){done();return} // 409: already on the list
+      throw new Error(r.status);
+    }catch(err){
+      btn.disabled=false;
+      msg.textContent='That didn’t go through. Check your connection and tap Notify me at launch again.';
+    }
+  });
+})();
+</script>
+</body>
+</html>
