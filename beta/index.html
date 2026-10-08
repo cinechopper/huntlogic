@@ -7,8 +7,8 @@
 <meta name="description" content="Test Hunt Logic before launch. iPhone testers get Pro free for the whole beta through TestFlight; the Android app is finishing Google review.">
 <meta property="og:title" content="Hunt Logic beta">
 <meta property="og:description" content="Test the hunting app before launch. Pro is free for beta testers.">
-<meta property="og:image" content="https://cinechopper.github.io/huntlogic/launch/img/og.jpg">
-<meta property="og:url" content="https://cinechopper.github.io/huntlogic/beta/">
+<meta property="og:image" content="https://gethuntlogic.com/launch/img/og.jpg">
+<meta property="og:url" content="https://gethuntlogic.com/beta/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0E1310">
@@ -142,7 +142,7 @@ footer a{color:var(--fog)}
 
   if(!ios&&!android&&window.qrcode){
     var q=qrcode(0,'M');
-    q.addData('https://cinechopper.github.io/huntlogic/beta/'+(s?'?s='+encodeURIComponent(s):''));
+    q.addData('https://gethuntlogic.com/beta/'+(s?'?s='+encodeURIComponent(s):''));
     q.make();
     document.getElementById('qr').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});
   }
