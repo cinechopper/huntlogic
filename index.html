@@ -1,35 +1,183 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="msvalidate.01" content="9513A5307BD90B9891971BADFADC7BC7">
-<title>Hunt Logic — deer hunting wind, stand and scouting planner</title>
+<title>Hunt Logic — deer hunting wind, stand and scouting planner (free beta)</title>
+<meta name="description" content="Hunt Logic does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Join the beta — testers get Pro free.">
+<meta property="og:title" content="Hunt Logic — join the beta">
+<meta property="og:description" content="The deer hunting planner that does the stand math. Beta testers get Pro free.">
+<meta property="og:image" content="https://cinechopper.github.io/huntlogic/launch/img/og.jpg">
+<meta property="og:url" content="https://cinechopper.github.io/huntlogic/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1310">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=VT323&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#10150f;--ink:#efe9dc;--dim:#b8b2a4;--orange:#f26b1d}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,system-ui,sans-serif}
-main{max-width:720px;margin:0 auto;padding:40px 20px 80px}
-h1{font-family:Georgia,serif;font-size:32px;margin:0 0 4px}h2{font-family:Georgia,serif;font-size:21px;margin:32px 0 8px}
-.eyebrow{color:var(--orange);font:700 12px/1 ui-monospace,monospace;letter-spacing:2px}p,li{color:var(--dim)}strong{color:var(--ink)}a{color:var(--orange)}
-.hero{text-align:center;padding-top:10px}.hero img{width:96px;border-radius:22px}.shots{display:flex;gap:12px;overflow-x:auto;margin:24px 0}.shots img{width:220px;border-radius:18px;flex:none}ul{padding-left:20px}</style>
-<meta name="description" content="Hunt Logic does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Scout Scan, thermals, movement forecast, Hunt Party and recovery.">
+:root{--ground:#0E1310;--field:#1D2721;--ink:#ECE7DB;--fog:#A7B2A5;--blaze:#FF6A2B;--blaze-ink:#1A0C04;--ember:#E9B44C}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.55;font-optical-sizing:auto;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px}
+.hero{position:relative;overflow:hidden;padding-top:min(20vh,170px)}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 25%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,16,0) 0%,rgba(14,19,16,.35) 25%,rgba(14,19,16,.85) 50%,var(--ground) 80%)}
+.stamp{position:absolute;z-index:2;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;font-family:"VT323",ui-monospace,monospace;font-size:20px;letter-spacing:.5px;color:rgba(236,231,219,.88);text-shadow:0 1px 2px rgba(0,0,0,.8)}
+.copy{position:relative;z-index:2;width:100%;max-width:640px;margin:0 auto;padding:0 16px 36px}
+.mark{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:600;font-size:17px}
+.mark img{width:30px;height:30px;border-radius:7px}
+h1{font-weight:700;font-size:clamp(34px,9vw,60px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;font-variation-settings:"opsz" 72;max-width:14ch}
+.lede{margin:0 0 20px;max-width:34ch}
+.from{font-family:"VT323",ui-monospace,monospace;font-size:20px;color:var(--ember);margin:0 0 8px}
+.from:empty{display:none}
+.logo{width:1.05em;height:1.05em;flex:none}
+.droid{width:1.35em}
+.card{background:var(--blaze);color:var(--blaze-ink);border-radius:14px;padding:18px 16px 16px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.card h2{font-size:23px;line-height:1.15;margin:0 0 8px;font-weight:700}
+.card p{margin:0 0 12px;font-size:17px;line-height:1.4}
+.card ol{margin:0 0 14px;padding-left:22px;font-size:17px;line-height:1.4}
+.card a:not(.btn){color:var(--blaze-ink)}
+.btns{display:flex;flex-direction:column;gap:10px}
+.btn{display:flex;justify-content:center;align-items:center;gap:8px;font-size:19px;font-weight:700;padding:14px 16px;border-radius:10px;background:var(--blaze-ink);color:#FFF1E6;text-decoration:none}
+.btn:hover{background:#000}
+.btn.alt{background:transparent;color:var(--blaze-ink);border:2px solid var(--blaze-ink)}
+.other{font-size:16px;margin:12px 0 0!important}
+.note{font-size:15px!important;margin:10px 0 0!important}
+/* One device, one button. No JS: everything shows. */
+body.ios [data-on]:not([data-on~=ios]),
+body.android [data-on]:not([data-on~=android]),
+body.desktop [data-on]:not([data-on~=desktop]){display:none}
+body:not(.ios):not(.android):not(.desktop) .other{display:none}
+.qr{display:none;gap:16px;align-items:center;margin-top:16px}
+.qr #qr{background:var(--ink);border-radius:10px;padding:10px;flex:none;width:132px;height:132px}
+.qr #qr svg{width:100%;height:100%;display:block}
+.qr p{margin:0;color:var(--fog);font-size:17px}
+body.desktop .qr{display:flex}
+main{max-width:640px;margin:0 auto;padding:8px 16px 40px}
+h3{font-size:28px;line-height:1.1;margin:28px 0 10px;font-weight:700}
+main p,main li{color:var(--fog)}
+main strong{color:var(--ink)}
+main ul{padding-left:20px;margin:0}
+main li{margin-bottom:8px}
+.shots{display:flex;gap:12px;overflow-x:auto;margin:6px -16px 8px;padding:0 16px 8px;scroll-snap-type:x mandatory}
+.shots img{width:200px;height:auto;border-radius:16px;flex:none;scroll-snap-align:start;border:1px solid rgba(236,231,219,.12)}
+.more{display:grid;gap:10px;margin-top:8px}
+.more a{display:block;background:var(--field);border:1px solid rgba(236,231,219,.14);border-radius:12px;padding:14px 16px;text-decoration:none}
+.more a span{display:block;color:var(--fog);font-size:16px}
+footer{max-width:640px;margin:0 auto;padding:10px 16px 40px;font-size:15px;color:var(--fog)}
+footer a{color:var(--fog)}
+@media (min-width:760px){
+  .stamp{left:28px;right:28px;top:20px;font-size:24px}
+  .hero{padding-top:min(24vh,220px)}
+  .card{padding:22px 20px 18px}
+  .btns{flex-direction:row} .btns .btn{flex:1}
+  .more{grid-template-columns:1fr 1fr 1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero picture img{animation:light 2.4s ease-out both}
+  @keyframes light{from{filter:brightness(.55) saturate(.8)}to{filter:none}}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <picture>
+    <source media="(min-width:760px)" srcset="launch/img/hero-wide.webp">
+    <img src="launch/img/hero-tall.webp" alt="A whitetail buck on a ridge above a misty valley at sunrise">
+  </picture>
+  <div class="stamp" aria-hidden="true"><span>CAM 01</span><span>BETA OPEN</span></div>
+  <div class="copy">
+    <div class="mark"><img src="img/icon.png" alt="">Hunt Logic</div>
+    <p class="from" id="from"></p>
+    <h1>Join the Hunt Logic beta.</h1>
+    <p class="lede">The deer hunting planner that does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Testers get Pro free while the beta runs.</p>
 
-</head><body><main>
-<div class="hero">
-<img src="img/icon.png" alt="Hunt Logic icon">
-<div class="eyebrow" style="margin-top:14px">HUNT LOGIC</div>
-<h1>The deer hunting planner that does the stand math.</h1>
-<p>Know which stand fits the wind, when to leave the house, and where deer are likely to move — on your own ground.</p>
-<p style="color:var(--dim)">Coming soon to iPhone and Android. <a href="launch/">Get the launch email</a>.</p>
-</div>
-<div class="shots"><img src="img/01.jpg" alt="Scout Scan"><img src="img/03.jpg" alt="Stand planning"><img src="img/05.jpg" alt="Hunt Party and journal"></div>
-<h2>What it does</h2>
-<ul>
-<li><strong>Scout Scan</strong> — likely bedding, saddles, pinches, draws and travel corridors, with the reason for each.</li>
-<li><strong>No more stand math</strong> — a leave time worked back from legal light through your drive, walk and setup.</li>
-<li><strong>Wind, thermals and scent</strong> — see where your scent goes, from you or your stand.</li>
-<li><strong>Deer movement forecast</strong> — morning and evening outlooks with stand freshness.</li>
-<li><strong>Hunt Party</strong> — share locations and sightings with your group. Free for everyone.</li>
-<li><strong>Journal and recovery</strong> — sightings log themselves; mark blood and sign on a trail map.</li>
-</ul>
-<h2>Free and Pro</h2>
-<p>Free includes maps, public land and property lines, up to 3 planned stands with leave times, a 3-day movement outlook, the journal, recovery marking, one Scout Scan, two deer movement simulations and the full Hunt Party. Pro adds unlimited scans and stands ranked for each sit, the full forecast, advanced map layers, thermals and journal analysis.</p>
-<p><a href="support/">Support</a> · <a href="privacy/">Privacy Policy</a> · <a href="mailto:huntlogic.support@gmail.com">huntlogic.support@gmail.com</a></p>
-</main></body></html>
+    <section class="card" aria-label="Get the app">
+      <div data-on="ios">
+        <h2>iPhone beta</h2>
+        <ol>
+          <li>Install Apple&rsquo;s free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> app.</li>
+          <li>Tap the button and accept the invite.</li>
+          <li>Open Hunt Logic. Pro is unlocked for the whole beta.</li>
+        </ol>
+      </div>
+      <div data-on="android">
+        <h2>Hunt Logic for Android</h2>
+        <p>Free to install from Google Play.</p>
+      </div>
+      <div data-on="desktop">
+        <h2>Pick your phone</h2>
+        <p>iPhone testers join through Apple&rsquo;s TestFlight app and get Pro free for the beta. Android installs from Google Play.</p>
+      </div>
+      <div class="btns">
+        <a class="btn" data-on="ios desktop" href="https://testflight.apple.com/join/ajnVmzvC"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Join the iPhone beta</a>
+        <a class="btn" data-on="android desktop" href="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic"><svg class="logo droid" viewBox="1.5 3.5 21 15" aria-hidden="true"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Get it on Google Play</a>
+      </div>
+      <p class="note" data-on="android desktop">The Android app is finishing Google&rsquo;s review. If Play says it isn&rsquo;t available yet, check back in a day or two, or <a href="launch/">get one email when it&rsquo;s out</a>.</p>
+      <p class="other" data-on="ios">On Android? <a href="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic">Get it on Google Play</a></p>
+      <p class="other" data-on="android">On iPhone? <a href="https://testflight.apple.com/join/ajnVmzvC">Join the iPhone beta</a></p>
+    </section>
+
+    <div class="qr">
+      <div id="qr" role="img" aria-label="QR code for this page"></div>
+      <p>On a computer? Scan this with your phone&rsquo;s camera to open this page there.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h3>What it does</h3>
+  <div class="shots">
+    <img src="img/01.jpg" alt="Scout Scan marking saddles and travel on a map" loading="lazy">
+    <img src="img/03.jpg" alt="Stand planning with wind and leave time" loading="lazy">
+    <img src="img/05.jpg" alt="Hunt Party and journal" loading="lazy">
+  </div>
+  <ul>
+    <li><strong>Scout Scan.</strong> Likely bedding, saddles, pinches, draws and travel corridors, with the reason for each.</li>
+    <li><strong>No more stand math.</strong> A leave time worked back from legal light through your drive, walk and setup.</li>
+    <li><strong>Wind, thermals and scent.</strong> See where your scent goes, from you or your stand.</li>
+    <li><strong>Deer movement forecast.</strong> Morning and evening outlooks with stand freshness.</li>
+    <li><strong>Hunt Party.</strong> Share locations and sightings with your group. Free for everyone.</li>
+    <li><strong>Journal and recovery.</strong> Sightings log themselves; mark blood and sign on a trail map.</li>
+  </ul>
+
+  <h3>Free and Pro</h3>
+  <p>Free includes maps, public land and property lines, up to 3 planned stands with leave times, a 3-day movement outlook, the journal, recovery marking, one Scout Scan, two deer movement simulations and the full Hunt Party. Pro adds unlimited scans and stands ranked for each sit, the full forecast, advanced map layers, thermals and journal analysis. Beta testers get all of Pro free.</p>
+
+  <div class="more">
+    <a href="drone-recovery/"><strong>Drone deer recovery</strong><span>Thermal drone search in north Missouri</span></a>
+    <a href="support/"><strong>Support</strong><span>Help and contact</span></a>
+    <a href="privacy/"><strong>Privacy</strong><span>What the app keeps and why</span></a>
+  </div>
+</main>
+<footer>Hunt Logic by Go Forth Labs. <a href="mailto:huntlogic.support@gmail.com">huntlogic.support@gmail.com</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+(function(){
+  var ua=navigator.userAgent||'';
+  var ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
+  var android=/Android/i.test(ua);
+  document.body.classList.add(ios?'ios':android?'android':'desktop');
+  // Where they came from (?s=tiktok etc.): shown, never sent anywhere.
+  var s=new URLSearchParams(location.search).get('s');
+  if(s&&/^[\w-]{1,24}$/.test(s)){
+    var names={tiktok:'TikTok',instagram:'Instagram',ig:'Instagram',youtube:'YouTube',yt:'YouTube',facebook:'Facebook',fb:'Facebook',x:'X'};
+    document.getElementById('from').textContent='Welcome from '+(names[s.toLowerCase()]||s);
+  }
+  if(!ios&&!android&&window.qrcode){
+    var q=qrcode(0,'M');
+    q.addData(location.origin+location.pathname+(s?'?s='+encodeURIComponent(s):''));
+    q.make();
+    document.getElementById('qr').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});
+  }
+})();
+</script>
+</body>
+</html>
