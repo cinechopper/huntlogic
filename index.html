@@ -49,6 +49,15 @@ h1{font-weight:700;font-size:clamp(34px,9vw,60px);line-height:1;letter-spacing:-
 .btn.alt{background:transparent;color:var(--blaze-ink);border:2px solid var(--blaze-ink)}
 .other{font-size:16px;margin:12px 0 0!important}
 .note{font-size:15px!important;margin:10px 0 0!important}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.two .btn{border:0;font:inherit;font-size:19px;font-weight:700;cursor:pointer;width:100%}
+body.android .two .btn[value=android]{order:-1}
+.field{display:block;font-size:15px;font-weight:700;margin:0 0 10px}
+.field input{display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:13px 12px;font-size:18px;border-radius:10px;border:2px solid var(--blaze-ink);background:#FFF6EE;color:#1a1a1a}
+.field input:focus{outline:3px solid var(--blaze-ink);outline-offset:2px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.msg{font-size:16px;margin:10px 0 0;min-height:1.2em}
+.done h2{margin-bottom:6px}
 /* One device, one button. No JS: everything shows. */
 body.ios [data-on]:not([data-on~=ios]),
 body.android [data-on]:not([data-on~=android]),
@@ -98,30 +107,19 @@ footer a{color:var(--fog)}
     <h1>Join the Hunt Logic beta.</h1>
     <p class="lede">The deer hunting planner that does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Testers get Pro free while the beta runs.</p>
 
-    <section class="card" aria-label="Get the app">
-      <div data-on="ios">
-        <h2>iPhone beta</h2>
-        <ol>
-          <li>Install Apple&rsquo;s free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> app.</li>
-          <li>Tap the button and accept the invite.</li>
-          <li>Open Hunt Logic. Pro is unlocked for the whole beta.</li>
-        </ol>
-      </div>
-      <div data-on="android">
-        <h2>Hunt Logic for Android</h2>
-        <p>Free to install from Google Play.</p>
-      </div>
-      <div data-on="desktop">
-        <h2>Pick your phone</h2>
-        <p>iPhone testers join through Apple&rsquo;s TestFlight app and get Pro free for the beta. Android installs from Google Play.</p>
-      </div>
-      <div class="btns">
-        <a class="btn" data-on="ios desktop" href="https://testflight.apple.com/join/ajnVmzvC"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Join the iPhone beta</a>
-        <a class="btn" data-on="android desktop" href="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic"><svg class="logo droid" viewBox="1.5 3.5 21 15" aria-hidden="true"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Get it on Google Play</a>
-      </div>
-      <p class="note" data-on="android desktop">The Android app is finishing Google&rsquo;s review. If Play says it isn&rsquo;t available yet, check back in a day or two, or <a href="launch/">get one email when it&rsquo;s out</a>.</p>
-      <p class="other" data-on="ios">On Android? <a href="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic">Get it on Google Play</a></p>
-      <p class="other" data-on="android">On iPhone? <a href="https://testflight.apple.com/join/ajnVmzvC">Join the iPhone beta</a></p>
+    <section class="card" aria-label="Join the beta">
+      <h2>Get early access</h2>
+      <p>Enter your name and email, then pick your phone. Testers get Pro free for the whole beta.</p>
+      <form id="beta" novalidate>
+        <label class="field">Name<input name="name" autocomplete="name" maxlength="80" required></label>
+        <label class="field">Email<input name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required></label>
+        <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="btns two">
+          <button type="submit" class="btn" name="platform" value="ios"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>iPhone</button>
+          <button type="submit" class="btn" name="platform" value="android"><svg class="logo droid" viewBox="1.5 3.5 21 15" aria-hidden="true"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Android</button>
+        </div>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      </form>
     </section>
 
     <div class="qr">
@@ -177,6 +175,49 @@ footer a{color:var(--fog)}
     q.make();
     document.getElementById('qr').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});
   }
+})();
+</script>
+<script>
+// Beta sign-up: name + email go to the Firestore waitlist (id = sha256 of the email, create-only),
+// then iPhone goes to TestFlight and Android to Google Play (or the Android list until it's live).
+(function(){
+  var PLAY_LIVE=false; // flip to true the day Google approves the Android app
+  var KEY='AIzaSyB7RHNhsVd5EzpEXi_OUopVuKIyajyyW3Q';
+  var BASE='https://firestore.googleapis.com/v1/projects/hunt-logic-app/databases/(default)/documents/waitlist';
+  var TF='https://testflight.apple.com/join/ajnVmzvC', PLAY='https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic';
+  var form=document.getElementById('beta'),msg=document.getElementById('msg');
+  var q=new URLSearchParams(location.search);
+  var source=('beta:'+(q.get('utm_source')||q.get('s')||q.get('ref')||(document.referrer?new URL(document.referrer).hostname:'direct'))).slice(0,40);
+  async function sha256(s){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var platform=(e.submitter&&e.submitter.value)||'ios';
+    if(form.website.value)return;
+    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase();
+    if(!name){msg.textContent='Enter your name.';form.name.focus();return}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Enter an email address, like you@example.com.';form.email.focus();return}
+    form.querySelectorAll('button').forEach(function(b){b.disabled=true});
+    msg.textContent='One sec…';
+    try{
+      var id=await sha256(email);
+      var body={fields:{name:{stringValue:name.slice(0,80)},email:{stringValue:email},platforms:{arrayValue:{values:[{stringValue:platform}]}},source:{stringValue:source},at:{timestampValue:new Date().toISOString()}}};
+      var r=await fetch(BASE+'?documentId='+id+'&key='+KEY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      if(!r.ok&&r.status!==409)throw new Error(r.status); // 409: already signed up, let them through
+    }catch(err){
+      form.querySelectorAll('button').forEach(function(b){b.disabled=false});
+      msg.textContent='That didn’t go through. Check your connection and try again.';return;
+    }
+    var card=form.parentNode;
+    if(platform==='ios'){
+      card.innerHTML='<h2>You’re in, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><ol><li>Install Apple’s free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> app.</li><li>Tap <strong>Open the invite</strong> below and accept it.</li><li>Open Hunt Logic. Pro is unlocked for the whole beta.</li></ol><div class="btns"><a class="btn" href="'+TF+'">Open the invite</a></div>';
+      setTimeout(function(){location.href=TF},1800);
+    }else if(PLAY_LIVE){
+      location.href=PLAY;
+    }else{
+      card.innerHTML='<h2>You’re on the Android list, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><p>Hunt Logic for Android is finishing Google’s review. We’ll email you the download link the day it’s live, with Pro free for beta testers.</p>';
+    }
+    card.classList.add('done');
+  });
 })();
 </script>
 </body>
