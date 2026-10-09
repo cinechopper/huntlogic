@@ -109,7 +109,7 @@ footer a{color:var(--fog)}
 
     <section class="card" aria-label="Join the beta">
       <h2>Get early access</h2>
-      <p>Enter your name and email, then pick your phone. Testers get Pro free for the whole beta.</p>
+      <p>Enter your name and email, then pick your phone. Testers get Pro free for the whole beta. On Android, use the Gmail you use for the Play Store.</p>
       <form id="beta" novalidate>
         <label class="field">Name<input name="name" autocomplete="name" maxlength="80" required></label>
         <label class="field">Email<input name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required></label>
@@ -214,7 +214,7 @@ footer a{color:var(--fog)}
     }else if(PLAY_LIVE){
       location.href=PLAY;
     }else{
-      card.innerHTML='<h2>You’re on the Android list, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><p>Hunt Logic for Android is finishing Google’s review. We’ll email you the download link the day it’s live, with Pro free for beta testers.</p>';
+      card.innerHTML='<h2>You’re on the Android beta list, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><p>We add Android testers by hand, usually within a day. Watch for an email with your install link, then open it on your phone and tap <strong>Accept invite</strong>. Pro is free for the whole beta.</p><p class="note">Google only lets in the Google account on your phone. If <strong>'+email.replace(/[<>&]/g,'')+'</strong> isn’t that account, sign up again with the Gmail you use for the Play Store.</p>';
     }
     card.classList.add('done');
   });
