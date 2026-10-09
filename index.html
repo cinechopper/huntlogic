@@ -209,12 +209,12 @@ footer a{color:var(--fog)}
     }
     var card=form.parentNode;
     if(platform==='ios'){
-      card.innerHTML='<h2>You’re in, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><ol><li>Install Apple’s free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> app.</li><li>Tap <strong>Open the invite</strong> below and accept it.</li><li>Open Hunt Logic. Pro is unlocked for the whole beta.</li></ol><div class="btns"><a class="btn" href="'+TF+'">Open the invite</a></div>';
+      card.innerHTML='<h2>You’re in, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><ol><li>Install Apple’s free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> app.</li><li>Tap <strong>Open the invite</strong> below, then <strong>Accept</strong> and <strong>Install</strong>.</li><li>Open Hunt Logic. Pro is unlocked for the whole beta.</li></ol><p class="note">We also emailed you these steps and your invite link.</p><div class="btns"><a class="btn" href="'+TF+'">Open the invite</a></div>';
       setTimeout(function(){location.href=TF},1800);
     }else if(PLAY_LIVE){
       location.href=PLAY;
     }else{
-      card.innerHTML='<h2>You’re on the Android beta list, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><p>We add Android testers by hand, usually within a day. Watch for an email with your install link, then open it on your phone and tap <strong>Accept invite</strong>. Pro is free for the whole beta.</p><p class="note">Google only lets in the Google account on your phone. If <strong>'+email.replace(/[<>&]/g,'')+'</strong> isn’t that account, sign up again with the Gmail you use for the Play Store.</p>';
+      card.innerHTML='<h2>You’re on the Android beta list, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><ol><li>We add your email as a tester, usually within a day. Google requires this step.</li><li>Check your email: we just sent your join link and these steps.</li><li>On your Android phone, signed in to the Play Store as <strong>'+email.replace(/[<>&]/g,'')+'</strong>, open the link and tap <strong>Accept invite</strong>.</li><li>Tap <strong>Download it on Google Play</strong> and install. Pro is free for the whole beta.</li></ol><p class="note">Not the Google account on your phone? Sign up again with the Gmail you use for the Play Store.</p>';
     }
     card.classList.add('done');
   });
