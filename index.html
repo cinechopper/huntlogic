@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="msvalidate.01" content="9513A5307BD90B9891971BADFADC7BC7">
-<title>Hunt Logic — deer hunting wind, stand and scouting planner (free beta)</title>
-<meta name="description" content="Hunt Logic does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Join the beta — testers get Pro free.">
-<meta property="og:title" content="Hunt Logic — join the beta">
-<meta property="og:description" content="The deer hunting planner that does the stand math. Beta testers get Pro free.">
+<title>Hunt Logic — deer hunting wind, stand and scouting planner (free on the App Store)</title>
+<meta name="description" content="Hunt Logic does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Free on the App Store; Android beta open now.">
+<meta property="og:title" content="Hunt Logic is live on the App Store">
+<meta property="og:description" content="The deer hunting planner that does the stand math. Free on iPhone; Android beta open now.">
 <meta property="og:image" content="https://gethuntlogic.com/launch/img/og.jpg">
 <meta property="og:url" content="https://gethuntlogic.com/">
 <meta property="og:type" content="website">
@@ -49,6 +49,14 @@ h1{font-weight:700;font-size:clamp(34px,9vw,60px);line-height:1;letter-spacing:-
 .btn.alt{background:transparent;color:var(--blaze-ink);border:2px solid var(--blaze-ink)}
 .other{font-size:16px;margin:12px 0 0!important}
 .note{font-size:15px!important;margin:10px 0 0!important}
+
+.store{margin:0 0 18px}
+.store-btn{background:var(--ink);color:#12100c;font-size:21px;padding:16px 18px;max-width:420px}
+.store-btn:hover{background:#fff}
+.store-note{color:var(--fog);font-size:15px;margin:8px 0 0}
+#beta .btns{display:flex;flex-direction:column;gap:6px}
+#beta .btns .btn{border:0;font:inherit;font-size:19px;font-weight:700;cursor:pointer;width:100%}
+.linkbtn{background:none;border:0;padding:6px 0 0;font:inherit;font-size:16px;font-weight:700;color:var(--blaze-ink);text-decoration:underline;cursor:pointer;text-align:center}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .two .btn{border:0;font:inherit;font-size:19px;font-weight:700;cursor:pointer;width:100%}
 body.android .two .btn[value=android]{order:-1}
@@ -102,25 +110,30 @@ footer a{color:var(--fog)}
     <source media="(min-width:760px)" srcset="launch/img/hero-wide.webp">
     <img src="launch/img/hero-tall.webp" alt="A whitetail buck on a ridge above a misty valley at sunrise">
   </picture>
-  <div class="stamp" aria-hidden="true"><span>CAM 01</span><span>BETA OPEN</span></div>
+  <div class="stamp" aria-hidden="true"><span>CAM 01</span><span>NOW ON THE APP STORE</span></div>
   <div class="copy">
     <div class="mark"><img src="img/icon.png" alt="">Hunt Logic</div>
     <p class="from" id="from"></p>
-    <h1>Join the Hunt Logic beta.</h1>
-    <p class="lede">The deer hunting planner that does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Testers get Pro free while the beta runs.</p>
+    <h1>Hunt Logic is live on the App Store.</h1>
+    <p class="lede">The deer hunting planner that does the stand math: which stand fits the wind, when to leave, and where deer are likely to move. Free on iPhone today. Android is in beta.</p>
+
+    <div class="store" data-on="ios desktop">
+      <a class="btn store-btn" href="https://apps.apple.com/us/app/hunt-logic/id6812516337"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Download on the App Store</a>
+      <p class="store-note">Free to download. Pro unlocks the full toolkit.</p>
+    </div>
 
     <section class="card" aria-label="Join the beta">
-      <h2>Get early access</h2>
-      <p>Enter your name and email, then pick your phone. Testers get Pro free for the whole beta. On Android, use the Gmail you use for the Play Store.</p>
+      <h2>Join the beta</h2>
+      <p>Android is in beta now. Enter your name and email (on Android, use the Gmail you use for the Play Store). Beta testers get Pro free while the beta lasts.</p>
       <form id="beta" novalidate>
         <label class="field">Name<input name="name" autocomplete="name" maxlength="80" required></label>
         <label class="field">Email<input name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required></label>
         <label class="field">Mobile number <span class="opt">(optional)</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="For beta update texts"></label>
         <p class="fine">Add your number to get occasional beta update texts. Reply STOP to opt out anytime.</p>
         <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="btns two">
-          <button type="submit" class="btn" name="platform" value="ios"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>iPhone</button>
-          <button type="submit" class="btn" name="platform" value="android"><svg class="logo droid" viewBox="1.5 3.5 21 15" aria-hidden="true"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Android</button>
+        <div class="btns">
+          <button type="submit" class="btn" name="platform" value="android"><svg class="logo droid" viewBox="1.5 3.5 21 15" aria-hidden="true"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Join the Android beta</button>
+          <button type="submit" class="linkbtn" name="platform" value="ios">or join the iPhone beta (Pro free while it lasts)</button>
         </div>
         <p class="msg" id="msg" role="status" aria-live="polite"></p>
       </form>
@@ -185,7 +198,7 @@ footer a{color:var(--fog)}
 // Beta sign-up: name + email go to the Firestore waitlist (id = sha256 of the email, create-only),
 // then iPhone goes to TestFlight and Android to Google Play (or the Android list until it's live).
 (function(){
-  var PLAY_LIVE=false; // flip to true the day Google approves the Android app
+  var PLAY_LIVE=false; // iPhone is live on the App Store (Oct 9 2026); flip this when Google approves Android
   var KEY='AIzaSyB7RHNhsVd5EzpEXi_OUopVuKIyajyyW3Q';
   var BASE='https://firestore.googleapis.com/v1/projects/hunt-logic-app/databases/(default)/documents/waitlist';
   var TF='https://testflight.apple.com/join/ajnVmzvC', PLAY='https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic';
