@@ -55,6 +55,8 @@ body.android .two .btn[value=android]{order:-1}
 .field{display:block;font-size:15px;font-weight:700;margin:0 0 10px}
 .field input{display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:13px 12px;font-size:18px;border-radius:10px;border:2px solid var(--blaze-ink);background:#FFF6EE;color:#1a1a1a}
 .field input:focus{outline:3px solid var(--blaze-ink);outline-offset:2px}
+.opt{font-weight:400}
+.fine{font-size:13px!important;margin:-4px 0 12px!important;opacity:.85}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .msg{font-size:16px;margin:10px 0 0;min-height:1.2em}
 .done h2{margin-bottom:6px}
@@ -113,6 +115,8 @@ footer a{color:var(--fog)}
       <form id="beta" novalidate>
         <label class="field">Name<input name="name" autocomplete="name" maxlength="80" required></label>
         <label class="field">Email<input name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required></label>
+        <label class="field">Mobile number <span class="opt">(optional)</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="For beta update texts"></label>
+        <p class="fine">Add your number to get occasional beta update texts. Reply STOP to opt out anytime.</p>
         <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="btns two">
           <button type="submit" class="btn" name="platform" value="ios"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>iPhone</button>
@@ -193,14 +197,17 @@ footer a{color:var(--fog)}
     e.preventDefault();
     var platform=(e.submitter&&e.submitter.value)||'ios';
     if(form.website.value)return;
-    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase();
+    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase(), phone=form.phone.value.trim();
     if(!name){msg.textContent='Enter your name.';form.name.focus();return}
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Enter an email address, like you@example.com.';form.email.focus();return}
+    if(phone&&!/^[0-9+() .-]{7,24}$/.test(phone)){msg.textContent='Check your mobile number, or leave it blank.';form.phone.focus();return}
     form.querySelectorAll('button').forEach(function(b){b.disabled=true});
     msg.textContent='One sec…';
     try{
       var id=await sha256(email);
-      var body={fields:{name:{stringValue:name.slice(0,80)},email:{stringValue:email},platforms:{arrayValue:{values:[{stringValue:platform}]}},source:{stringValue:source},at:{timestampValue:new Date().toISOString()}}};
+      var fields={name:{stringValue:name.slice(0,80)},email:{stringValue:email},platforms:{arrayValue:{values:[{stringValue:platform}]}},source:{stringValue:source},at:{timestampValue:new Date().toISOString()}};
+      if(phone)fields.phone={stringValue:phone};
+      var body={fields:fields};
       var r=await fetch(BASE+'?documentId='+id+'&key='+KEY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
       if(!r.ok&&r.status!==409)throw new Error(r.status); // 409: already signed up, let them through
     }catch(err){
