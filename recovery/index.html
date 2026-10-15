@@ -14,8 +14,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/drone-wide.jpg" media="(min-width:701px)">
-<link rel="preload" as="image" href="img/drone-tall.jpg" media="(max-width:700px)">
+<link rel="preload" as="image" href="img/hero.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://gethuntlogic.com/recovery/#business","name":"Hunt Logic Drone Deer Recovery","description":"Thermal drone deer recovery for hunters in north Missouri, flown by an FAA Part 107 certified pilot with drone experience since 2012.","url":"https://gethuntlogic.com/recovery/","telephone":"+1-816-343-8512","image":"https://gethuntlogic.com/recovery/img/og.jpg","logo":"https://gethuntlogic.com/recovery/img/logo.png","priceRange":"$$",
 "sameAs":["https://www.facebook.com/profile.php?id=61595223358707"],
@@ -49,10 +48,10 @@ h1,h2,h3,.brand b,.btn,.kicker{font-family:"Barlow Condensed",system-ui,sans-ser
 .brand span{display:block;font-size:13px;color:var(--fog);letter-spacing:.12em;text-transform:uppercase}
 .top .phone{font:700 18px/1 "Barlow Condensed",sans-serif;text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(14,19,16,.55)}
 
-.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:#33465a url(img/drone-wide.jpg) 70% 40%/cover no-repeat}
-@media (max-width:700px){.hero{background-image:url(img/drone-tall.jpg);background-position:center 30%;min-height:96vh}}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,19,16,.92) 0%,rgba(14,19,16,.7) 38%,rgba(14,19,16,.05) 70%),linear-gradient(180deg,rgba(14,19,16,0) 55%,var(--ground) 100%)}
-@media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(14,19,16,.55) 0%,rgba(14,19,16,.1) 30%,rgba(14,19,16,.75) 60%,var(--ground) 100%)}}
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:var(--ground);overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;right:0;bottom:0;width:60%;background:url(img/hero.jpg) center 42%/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ground) 0%,var(--ground) 40%,rgba(14,19,16,.55) 50%,rgba(14,19,16,0) 64%),linear-gradient(180deg,rgba(14,19,16,0) 60%,var(--ground) 100%)}
+@media (max-width:700px){.hero{min-height:0;padding-top:min(100vw,52vh)}.hero::before{width:100%;bottom:auto;height:calc(min(100vw,52vh) + 90px);background-position:center 45%}.hero::after{background:linear-gradient(180deg,rgba(14,19,16,.55) 0,rgba(14,19,16,0) 90px,rgba(14,19,16,0) calc(min(100vw,52vh) - 40px),var(--ground) calc(min(100vw,52vh) + 90px),var(--ground) 100%)}}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:56px}
 .kicker{font-size:17px;font-weight:700;color:var(--blaze-hi);letter-spacing:.14em;margin:0 0 6px}
 h1{font-size:clamp(46px,8vw,86px);line-height:.92;margin:0 0 18px;font-weight:800;max-width:11ch}
@@ -120,7 +119,7 @@ figcaption{font-size:14px;color:var(--fog);margin-top:8px}
   <a class="phone" href="tel:+18163438512">(816) 343-8512</a>
 </div></header>
 
-<div class="hero" role="img" aria-label="Our thermal recovery drone in flight"><div class="wrap">
+<div class="hero" role="img" aria-label="Our pilot at the controller, thermal and zoom cameras locked on two bucks"><div class="wrap">
   <p class="kicker">North Missouri · Day or night</p>
   <h1>Shot a deer and can't find it?</h1>
   <p class="lede">Our thermal drone finds it from above, often in minutes, without pushing a wounded deer deeper into the timber.</p>
