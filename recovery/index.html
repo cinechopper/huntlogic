@@ -60,6 +60,7 @@ h1{font-size:clamp(46px,8vw,86px);line-height:.92;margin:0 0 18px;font-weight:80
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 28px;border-radius:12px;font-size:22px;font-weight:700;text-decoration:none}
 .btn.call{background:var(--blaze);color:var(--blaze-ink)}
 .btn.call:hover{background:var(--blaze-hi)}
+.btn.save{border:2px solid var(--blaze);color:var(--blaze-hi);background:rgba(14,19,16,.35)}
 .btn.text{border:2px solid var(--ink);color:var(--ink);background:rgba(14,19,16,.35)}
 .note{font-size:16px;color:var(--fog);margin:14px 0 0}
 
@@ -98,9 +99,10 @@ h2{font-size:clamp(32px,4.5vw,46px);line-height:1;margin:0 0 22px;font-weight:80
 footer{padding:28px 0 40px;color:var(--fog);font-size:15px;border-top:1px solid var(--line)}
 footer a{color:var(--fog)}
 
+.top .savepill{display:none;align-items:center;flex:none;white-space:nowrap;font:700 15px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;color:var(--blaze-hi);padding:9px 10px;border:1.5px solid var(--blaze);border-radius:10px;background:rgba(14,19,16,.6)}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:5;display:none;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(14,19,16,.95);border-top:1px solid var(--line)}
 .sticky .btn{flex:1;min-height:52px;font-size:20px;padding:0 12px}
-@media (max-width:700px){.sticky{display:flex}body{padding-bottom:78px}.top .phone{display:none}}
+@media (max-width:700px){.sticky{display:flex}body{padding-bottom:78px}.top .phone{display:none}.top .savepill{display:inline-flex}.brand{gap:10px}.brand img{width:40px;height:40px}.brand b{font-size:19px}.brand span{font-size:11px;letter-spacing:.06em;white-space:nowrap}}
 
 .see{display:grid;grid-template-columns:1.35fr .65fr;gap:32px;align-items:center}
 .see figure,.pilot figure,.gallery figure{margin:0}
@@ -117,6 +119,7 @@ figcaption{font-size:14px;color:var(--fog);margin-top:8px}
 <header class="top"><div class="wrap">
   <a class="brand" href="./"><img src="img/logo.png" alt="" width="46" height="46"><div><b>Hunt Logic</b><span>Drone Deer Recovery</span></div></a>
   <a class="phone" href="tel:+18163438512">(816) 343-8512</a>
+  <a class="savepill" href="Hunt-Logic-Deer-Recovery.vcf" download aria-label="Save our number to your contacts">Save number</a>
 </div></header>
 
 <div class="hero" role="img" aria-label="Our pilot at the controller, thermal and zoom cameras locked on two bucks"><div class="wrap">
@@ -126,6 +129,7 @@ figcaption{font-size:14px;color:var(--fog);margin-top:8px}
   <div class="cta">
     <a class="btn call" href="tel:+18163438512">Call (816) 343-8512</a>
     <a class="btn text" href="sms:+18163438512?&body=Deer%20recovery%3A%20county%3D%20%20%20%2C%20time%20of%20shot%3D%20%20%20%2C%20bow%20or%20gun%3D%20%20%20%2C%20landowner%20OK%3D%20yes%2Fno">Text us</a>
+    <a class="btn save" href="Hunt-Logic-Deer-Recovery.vcf" download>Save our number</a>
   </div>
   <p class="note">Call or text for a quote. The sooner we fly, the better the odds.</p>
 </div></div>
@@ -208,7 +212,7 @@ figcaption{font-size:14px;color:var(--fog);margin-top:8px}
   <p>When a deer runs off at last light, you won't want to be searching for a phone number.</p>
   <div class="cta">
     <a class="btn call" href="tel:+18163438512">Call (816) 343-8512</a>
-    <a class="btn text" href="../drone-recovery/save/Hunt-Logic-Drone-Recovery.vcf" download>Save contact</a>
+    <a class="btn text" href="Hunt-Logic-Deer-Recovery.vcf" download>Save contact</a>
   </div>
 </div></section>
 </main>
