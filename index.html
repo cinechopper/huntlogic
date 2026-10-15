@@ -54,8 +54,6 @@ h1{font-weight:700;font-size:clamp(34px,9vw,60px);line-height:1;letter-spacing:-
 .store-btn{background:var(--ink);color:#12100c;font-size:21px;padding:16px 18px;max-width:420px}
 .store-btn:hover{background:#fff}
 .store-note{color:var(--fog);font-size:15px;margin:8px 0 0}
-#beta .btns{display:flex;flex-direction:column;gap:6px}
-#beta .btns .btn{border:0;font:inherit;font-size:19px;font-weight:700;cursor:pointer;width:100%}
 .linkbtn{background:none;border:0;padding:6px 0 0;font:inherit;font-size:16px;font-weight:700;color:var(--blaze-ink);text-decoration:underline;cursor:pointer;text-align:center}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .two .btn{border:0;font:inherit;font-size:19px;font-weight:700;cursor:pointer;width:100%}
@@ -127,23 +125,6 @@ footer a{color:var(--fog)}
       <p class="store-note">Free to download. Pro unlocks the full toolkit.</p>
     </div>
 
-    <section class="card" aria-label="Join the beta">
-      <h2>Join the beta</h2>
-      <p>Want to test new features before everyone else? Beta testers get Pro free while the beta lasts. Enter your name and email (on Android, use the Gmail you use for the Play Store).</p>
-      <form id="beta" novalidate>
-        <label class="field">Name<input name="name" autocomplete="name" maxlength="80" required></label>
-        <label class="field">Email<input name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required></label>
-        <label class="field">Mobile number <span class="opt">(optional)</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="For beta update texts"></label>
-        <p class="fine">Add your number to get occasional beta update texts. Reply STOP to opt out anytime.</p>
-        <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="btns">
-          <button type="submit" class="btn" name="platform" value="android"><svg class="logo droid" viewBox="1.5 3.5 21 15" aria-hidden="true"><path fill="currentColor" d="M18.44 5.56l-2.03 3.5c-1.4-.58-2.88-.88-4.41-.88s-3.01.3-4.41.88L5.56 5.56a.42.42 0 0 0-.73.42l2 3.45C3.97 10.95 2.04 13.62 1.78 16.8h20.44c-.26-3.18-2.19-5.85-5.05-7.37l2-3.45a.42.42 0 0 0-.73-.42zM7 14.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm10 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Join the Android beta</button>
-          <button type="submit" class="linkbtn" name="platform" value="ios">or join the iPhone beta (Pro free while it lasts)</button>
-        </div>
-        <p class="msg" id="msg" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-
     <div class="qr">
       <div id="qr" role="img" aria-label="QR code for this page"></div>
       <p>On a computer? Scan this with your phone&rsquo;s camera to open this page there.</p>
@@ -197,52 +178,6 @@ footer a{color:var(--fog)}
     q.make();
     document.getElementById('qr').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});
   }
-})();
-</script>
-<script>
-// Beta sign-up: name + email go to the Firestore waitlist (id = sha256 of the email, create-only),
-// then iPhone goes to TestFlight and Android to Google Play (or the Android list until it's live).
-(function(){
-  var PLAY_LIVE=false; // Both stores are live (Oct 10 2026); false keeps Android beta sign-ups on the internal-test flow (free Pro) instead of the store
-  var KEY='AIzaSyB7RHNhsVd5EzpEXi_OUopVuKIyajyyW3Q';
-  var BASE='https://firestore.googleapis.com/v1/projects/hunt-logic-app/databases/(default)/documents/waitlist';
-  var TF='https://testflight.apple.com/join/ajnVmzvC', PLAY='https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic';
-  var form=document.getElementById('beta'),msg=document.getElementById('msg');
-  var q=new URLSearchParams(location.search);
-  var source=('beta:'+(q.get('utm_source')||q.get('s')||q.get('ref')||(document.referrer?new URL(document.referrer).hostname:'direct'))).slice(0,40);
-  async function sha256(s){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
-  form.addEventListener('submit',async function(e){
-    e.preventDefault();
-    var platform=(e.submitter&&e.submitter.value)||'ios';
-    if(form.website.value)return;
-    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase(), phone=form.phone.value.trim();
-    if(!name){msg.textContent='Enter your name.';form.name.focus();return}
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Enter an email address, like you@example.com.';form.email.focus();return}
-    if(phone&&!/^[0-9+() .-]{7,24}$/.test(phone)){msg.textContent='Check your mobile number, or leave it blank.';form.phone.focus();return}
-    form.querySelectorAll('button').forEach(function(b){b.disabled=true});
-    msg.textContent='One sec…';
-    try{
-      var id=await sha256(email);
-      var fields={name:{stringValue:name.slice(0,80)},email:{stringValue:email},platforms:{arrayValue:{values:[{stringValue:platform}]}},source:{stringValue:source},at:{timestampValue:new Date().toISOString()}};
-      if(phone)fields.phone={stringValue:phone};
-      var body={fields:fields};
-      var r=await fetch(BASE+'?documentId='+id+'&key='+KEY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-      if(!r.ok&&r.status!==409)throw new Error(r.status); // 409: already signed up, let them through
-    }catch(err){
-      form.querySelectorAll('button').forEach(function(b){b.disabled=false});
-      msg.textContent='That didn’t go through. Check your connection and try again.';return;
-    }
-    var card=form.parentNode;
-    if(platform==='ios'){
-      card.innerHTML='<h2>You’re in, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><ol><li>Install Apple’s free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> app.</li><li>Tap <strong>Open the invite</strong> below, then <strong>Accept</strong> and <strong>Install</strong>.</li><li>Open Hunt Logic. Pro is unlocked for the whole beta.</li></ol><p class="note">We also emailed you these steps and your invite link.</p><div class="btns"><a class="btn" href="'+TF+'">Open the invite</a></div>';
-      setTimeout(function(){location.href=TF},1800);
-    }else if(PLAY_LIVE){
-      location.href=PLAY;
-    }else{
-      card.innerHTML='<h2>You’re on the Android beta list, '+name.split(' ')[0].replace(/[<>&]/g,'')+'.</h2><ol><li>We add your email as a tester, usually within a day. Google requires this step.</li><li>Check your email: we just sent your join link and these steps.</li><li>On your Android phone, signed in to the Play Store as <strong>'+email.replace(/[<>&]/g,'')+'</strong>, open the link and tap <strong>Accept invite</strong>.</li><li>Tap <strong>Download it on Google Play</strong> and install. Pro is free for the whole beta.</li></ol><p class="note">Not the Google account on your phone? Sign up again with the Gmail you use for the Play Store.</p>';
-    }
-    card.classList.add('done');
-  });
 })();
 </script>
 </body>
