@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hunt Logic Creators — free Pro for hunters who make videos</title>
+<meta name="description" content="Hunt Logic Creators: hunters with a small, real following get Hunt Logic Pro free for life and a personal link in return for honest videos about using the app. No cash yet.">
+<meta property="og:title" content="Hunt Logic Creators">
+<meta property="og:description" content="Make honest videos about using Hunt Logic on your hunts. Get Pro free for life and a personal tracked link.">
+<meta property="og:image" content="https://gethuntlogic.com/launch/img/og.jpg">
+<meta property="og:url" content="https://gethuntlogic.com/creators/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E1310">
+<link rel="icon" href="../img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0E1310;
+  --field:#1D2721;
+  --line:rgba(236,231,219,.14);
+  --ink:#ECE7DB;
+  --fog:#A7B2A5;
+  --blaze:#FF6A2B;
+  --blaze-ink:#1A0C04;
+  --ember:#E9B44C;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.55;font-optical-sizing:auto}
+img{display:block;max-width:100%}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+.label{font-family:"VT323",ui-monospace,monospace;font-size:20px;letter-spacing:1px;color:var(--ember);text-transform:uppercase;margin:0 0 6px}
+header.top{padding:22px 0 0}
+.mark{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;text-decoration:none}
+.mark img{width:30px;height:30px;border-radius:7px}
+.hero{padding:44px 0 26px}
+h1{font-weight:700;font-size:clamp(36px,9vw,60px);line-height:1.02;letter-spacing:-.02em;margin:0 0 16px;font-variation-settings:"opsz" 72}
+.lede{font-size:21px;color:var(--ink);margin:0 0 22px;max-width:34ch}
+.cta{display:inline-block;background:var(--blaze);color:var(--blaze-ink);font-weight:700;font-size:19px;padding:14px 22px;border-radius:10px;text-decoration:none}
+.cta:hover{background:#ff7d45}
+.note{color:var(--fog);font-size:16px;margin:14px 0 0}
+section{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
+section h2{font-size:30px;line-height:1.1;margin:0 0 14px;font-weight:700}
+section p{margin:0 0 14px}
+.deal{display:grid;gap:12px;grid-template-columns:1fr;margin:8px 0 0}
+.deal div{background:var(--field);border-radius:14px;padding:16px 18px}
+.deal strong{display:block;font-size:20px;margin-bottom:2px}
+.deal span{color:var(--fog);font-size:17px;line-height:1.45}
+ul.list{padding-left:0;margin:0 0 14px;list-style:none}
+ul.list li{padding:11px 0 11px 28px;border-bottom:1px solid var(--line);position:relative}
+ul.list li::before{content:"";position:absolute;left:4px;top:19px;width:10px;height:10px;border-radius:2px;background:var(--blaze)}
+ul.list li strong{font-weight:600}
+.callout{border-left:4px solid var(--ember);background:var(--field);padding:14px 18px;border-radius:0 12px 12px 0;margin:6px 0 16px}
+.callout p{margin:0 0 8px}
+.callout p:last-child{margin:0}
+.ideas{counter-reset:i;padding:0;margin:0;list-style:none}
+.ideas li{counter-increment:i;padding:14px 0 14px 46px;border-bottom:1px solid var(--line);position:relative}
+.ideas li::before{content:counter(i);position:absolute;left:0;top:12px;font-family:"VT323",monospace;font-size:34px;color:var(--blaze);width:34px;text-align:center;line-height:1.1}
+.ideas strong{display:block}
+.ideas span{color:var(--fog);font-size:17px}
+ol.steps{padding-left:22px;margin:0 0 14px}
+ol.steps li{padding:4px 0}
+/* form */
+.formcard{background:var(--field);border-radius:16px;padding:22px 20px 24px;margin-top:8px}
+form{display:grid;gap:16px}
+label,.lab{display:block;font-size:16px;font-weight:600;margin-bottom:5px}
+label small,.lab small{font-weight:400;color:var(--fog);font-size:14.5px;margin-left:4px}
+input[type=text],input[type=email],input[type=url],input[type=number],select,textarea{width:100%;font:inherit;font-size:18px;padding:12px 13px;border:2px solid rgba(236,231,219,.25);border-radius:10px;background:var(--ground);color:var(--ink)}
+input::placeholder,textarea::placeholder{color:#6f7b70}
+input:focus,select:focus,textarea:focus{border-color:var(--ember);outline:none}
+textarea{min-height:110px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr;gap:16px}
+.ch{display:grid;grid-template-columns:1fr;gap:10px;padding:14px;border:1px solid var(--line);border-radius:12px}
+.ch .row{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:560px){.two{grid-template-columns:1fr 1fr}.ch .row{grid-template-columns:2fr 1fr}}
+.chk{display:flex;gap:11px;align-items:flex-start;font-size:16px;line-height:1.4;font-weight:400}
+.chk input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--blaze);flex:none}
+button.send{font:inherit;font-size:19px;font-weight:700;padding:14px 22px;border:0;border-radius:10px;background:var(--blaze);color:var(--blaze-ink);cursor:pointer}
+button.send:hover{background:#ff7d45}
+button.send[disabled]{opacity:.6;cursor:progress}
+.msg{margin:0;font-size:16.5px;font-weight:600}
+.msg:empty{display:none}
+.msg.err{color:#ffb089}
+.fine{font-size:14.5px;color:var(--fog);margin:0}
+.fine a{color:var(--ember)}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.bad{border-color:#ff8a5c!important}
+.done h3{font-size:28px;margin:0 0 8px}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin:8px 0 0;color:var(--fog);font-size:17px}
+footer{padding:36px 0 56px;font-size:15px;color:var(--fog)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><a class="mark" href="../"><img src="../img/icon.png" alt="">Hunt Logic</a></header>
+
+<div class="hero">
+  <p class="label">Hunt Logic Creators</p>
+  <h1>Hunt with it. Film it. Get Pro free for life.</h1>
+  <p class="lede">Hunt Logic is a deer hunting planner: which stand fits the wind, when to leave, where deer are likely to move. If you hunt deer and make videos, we would like to see how it holds up on your ground.</p>
+  <a class="cta" href="#apply">Apply to be a creator</a>
+  <p class="note">Free to apply. No cash payment yet. We reply to every application.</p>
+</div>
+
+<section id="deal">
+  <h2>The deal</h2>
+  <p>We are looking for working hunters with a small, real audience, roughly <strong>2,000 to 150,000</strong> followers on YouTube, TikTok, Instagram or Facebook. You make videos about using Hunt Logic on your own hunts. In return you get:</p>
+  <div class="deal">
+    <div><strong>Hunt Logic Pro, free for life</strong><span>We send you a free-year code for the iPhone app or a promo code for Android, and a fresh one each year, for as long as you are in the program. Pro is otherwise a yearly subscription after a free trial.</span></div>
+    <div><strong>A personal link</strong><span>Your own gethuntlogic.com link, so your viewers land on the right store page and we can count the downloads that came from you. We only see counts, never who they are.</span></div>
+    <div><strong>The creator kit</strong><span>Logos, real app screenshots, talking points and caption templates, sent once you are approved.</span></div>
+  </div>
+  <p class="note" style="margin-top:16px">There is no cash payment today. We may add a commission later; if we do, it would be something we offer you, and nothing in this program promises it.</p>
+</section>
+
+<section id="requirements">
+  <h2>What we ask of you</h2>
+  <ul class="list">
+    <li><strong>You really hunt deer.</strong> Whitetail, mule deer or blacktail, bow, gun or muzzleloader. Public land, private, small farm, big woods, all welcome.</li>
+    <li><strong>Make at least one video in your first 30 days,</strong> then as many as you like. Short or long, your style. You keep your content and your voice.</li>
+    <li><strong>Say it is a free app from Hunt Logic.</strong> In every video, see the box below.</li>
+    <li><strong>Be honest.</strong> If something does not work for your hunting, say so. We would rather hear it than have you fake it. Do not claim the app will find you a deer, or that it replaces scouting, woodsmanship or local rules.</li>
+    <li><strong>Hunt legally and safely.</strong> Follow your state's laws and basic safety, and no content that shows either broken.</li>
+  </ul>
+  <div class="callout">
+    <p class="label" style="margin-bottom:2px">Disclosure, required in every video</p>
+    <p>The FTC requires you to say when you got something free in return for a video. Do both of these, every time:</p>
+    <p><strong>1. In the video:</strong> say it out loud or put it on screen near the start: <em>"Hunt Logic gave me this app for free."</em></p>
+    <p><strong>2. In the caption:</strong> put <strong>#ad</strong> or <strong>"Free app from Hunt Logic"</strong> where it shows before the "more" cut-off, plus the platform's own paid-partnership or branded-content label where it has one.</p>
+    <p>"Thanks Hunt Logic" or burying it in a block of hashtags is not enough. Free Pro counts, even with no cash involved.</p>
+  </div>
+</section>
+
+<section id="good-video">
+  <h2>What a good video looks like</h2>
+  <p>Real use on a real hunt, not an ad read. Show the screen while you do something with it: pick a stand for tomorrow's wind, plan a shot angle, send a pin to your hunting buddy. Say what surprised you and what you would still do yourself. Thirty to ninety seconds on short-form is plenty. Longer is fine as a section of a regular hunt video.</p>
+  <p><strong>Three ideas to start:</strong></p>
+  <ol class="ideas">
+    <li><strong>Which stand tomorrow?</strong><span>Open the wind forecast for two stands you hunt and show which one Hunt Logic picks. Then tell us if you agree, and what you did.</span></li>
+    <li><strong>Plan a shot before you draw</strong><span>Use Plan a shot to see where the deer's vitals sit from your stand height and distance. Show what changed your mind about a 30-yard quartering-away shot.</span></li>
+    <li><strong>Hunt Party with the crew</strong><span>Share one sighting with a buddy on another phone, iPhone and Android, and show how it appears on both maps.</span></li>
+  </ol>
+  <p class="fine">Ten more ideas, caption templates and screenshots are in the creator kit once you are approved.</p>
+</section>
+
+<section id="kit">
+  <h2>The creator kit</h2>
+  <p>When you are approved we email you a private page with: our logos and app icon, six real app screenshots, talking points in plain language, ten video ideas matched to features, caption and disclosure templates, and how your personal link and free-access code work. It is also how you will know exactly what the app does and does not do before you talk about it.</p>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li>Apply below. It takes about three minutes.</li>
+    <li>We look at your channels and reply by email, usually within a week.</li>
+    <li>If approved, you get your link, your free-Pro code and the kit.</li>
+    <li>Use the app on a real hunt. Make your video. Disclose.</li>
+    <li>Send us the link to what you posted. We will not edit it or ask for a script.</li>
+  </ol>
+</section>
+
+<section id="apply">
+  <h2>Apply</h2>
+  <div class="formcard" id="formcard">
+  <form id="form" novalidate autocomplete="on">
+    <div class="two">
+      <div><label for="name">Your name</label><input id="name" name="name" type="text" maxlength="80" autocomplete="name" required></div>
+      <div><label for="email">Email</label><input id="email" name="email" type="email" maxlength="254" autocomplete="email" required></div>
+    </div>
+    <div class="two">
+      <div><label for="state">State or province where you hunt</label><input id="state" name="state" type="text" maxlength="40" required></div>
+      <div><label for="hunts">What you hunt</label><input id="hunts" name="hunts" type="text" maxlength="300" placeholder="Whitetail with a bow, public land" required></div>
+    </div>
+    <div>
+      <div class="lab">Your channels <small>Give us at least one. Link or @handle.</small></div>
+      <div style="display:grid;gap:12px">
+        <div class="ch"><div class="row">
+          <div><label for="youtube">YouTube</label><input id="youtube" name="youtube" type="text" maxlength="200" placeholder="youtube.com/@yourchannel"></div>
+          <div><label for="subsYoutube">Subscribers</label><input id="subsYoutube" name="subsYoutube" type="number" min="0" max="100000000" inputmode="numeric"></div>
+        </div></div>
+        <div class="ch"><div class="row">
+          <div><label for="tiktok">TikTok</label><input id="tiktok" name="tiktok" type="text" maxlength="200" placeholder="@yourhandle"></div>
+          <div><label for="subsTiktok">Followers</label><input id="subsTiktok" name="subsTiktok" type="number" min="0" max="100000000" inputmode="numeric"></div>
+        </div></div>
+        <div class="ch"><div class="row">
+          <div><label for="instagram">Instagram</label><input id="instagram" name="instagram" type="text" maxlength="200" placeholder="@yourhandle"></div>
+          <div><label for="subsInstagram">Followers</label><input id="subsInstagram" name="subsInstagram" type="number" min="0" max="100000000" inputmode="numeric"></div>
+        </div></div>
+        <div class="ch"><div class="row">
+          <div><label for="facebook">Facebook</label><input id="facebook" name="facebook" type="text" maxlength="200" placeholder="facebook.com/yourpage"></div>
+          <div><label for="subsFacebook">Followers</label><input id="subsFacebook" name="subsFacebook" type="number" min="0" max="100000000" inputmode="numeric"></div>
+        </div></div>
+      </div>
+    </div>
+    <div><label for="why">Why do you want to do this? <small>A few sentences. What would you show?</small></label><textarea id="why" name="why" maxlength="1500" required></textarea></div>
+    <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <label class="chk"><input type="checkbox" id="agree" name="agree"><span>I understand I must disclose in every video that I got Hunt Logic free, and that this is a free-access program with no cash payment.</span></label>
+    <button class="send" id="send" type="submit">Send my application</button>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    <p class="fine">We use what you enter here only to review your application and to email you about it. We do not add you to a marketing list. <a href="../privacy/#creators">Details in the privacy policy.</a></p>
+  </form>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Questions</h2>
+  <details><summary>Does "free for life" really mean free forever?</summary><p>For as long as you stay in the program, yes: you get a free year of Pro at a time and we renew it each year. We do this with App Store offer codes on iPhone and Google Play promo codes on Android, so there is no payment on your end. If we ever end the program we will tell you in writing first.</p></details>
+  <details><summary>Do I need 2,000 followers?</summary><p>We are starting with channels from about 2,000 to 150,000 on any one platform. If you are a little under and your hunting content is good, apply anyway and say so.</p></details>
+  <details><summary>Do you pay for views or installs?</summary><p>No. There is no cash payment today. We count installs from your personal link so we can learn what works, and we may offer a commission later. Nothing here promises one.</p></details>
+  <details><summary>Can I use my own words?</summary><p>Yes. We do not write scripts or approve videos. We will only ask you to fix something that is plainly wrong about what the app does, or missing the disclosure.</p></details>
+  <details><summary>Do I have to hide that I am a creator for Hunt Logic?</summary><p>The opposite. You must say it. That is the rule that keeps your audience's trust, and it is the law.</p></details>
+  <details><summary>Android or iPhone?</summary><p>Both work. Hunt Logic is on the App Store and Google Play.</p></details>
+  <details><summary>How do I stop hearing from you?</summary><p>Email <a href="mailto:huntlogic.support@gmail.com">huntlogic.support@gmail.com</a> and say so. We will not contact you again.</p></details>
+</section>
+
+<footer>Hunt Logic by Go Forth Labs. <a href="mailto:huntlogic.support@gmail.com">huntlogic.support@gmail.com</a> &middot; <a href="../privacy/">Privacy</a> &middot; <a href="../">Home</a></footer>
+</div>
+
+<script>
+// Application: one Firestore doc per email (id = sha256 of the lowercased address), create-only,
+// same REST pattern as the launch page waitlist. No reads from the browser.
+(function(){
+  var KEY='AIzaSyB7RHNhsVd5EzpEXi_OUopVuKIyajyyW3Q';
+  var BASE='https://firestore.googleapis.com/v1/projects/hunt-logic-app/databases/(default)/documents/creatorApplications';
+  var form=document.getElementById('form'),msg=document.getElementById('msg'),btn=document.getElementById('send');
+  var q=new URLSearchParams(location.search);
+  var source=(q.get('s')||q.get('utm_source')||(document.referrer?new URL(document.referrer).hostname:'direct')).slice(0,40);
+  var CH=['youtube','tiktok','instagram','facebook'];
+
+  async function sha256(s){
+    var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
+  }
+  function bad(el,text){
+    msg.className='msg err';msg.textContent=text;
+    if(el){el.classList.add('bad');el.focus()}
+  }
+  function clear(){msg.className='msg';form.querySelectorAll('.bad').forEach(function(e){e.classList.remove('bad')})}
+  function v(n){return form.elements[n].value.trim()}
+  function fallback(data){
+    // Shown when the write is refused or offline. The form never loses what they typed.
+    var lines=['Name: '+data.name,'Email: '+data.email,'State: '+data.state,'Hunts: '+data.hunts];
+    CH.forEach(function(c){if(data[c])lines.push(c+': '+data[c]+(data['subs'+c[0].toUpperCase()+c.slice(1)]!=null?' ('+data['subs'+c[0].toUpperCase()+c.slice(1)]+')':''))});
+    lines.push('Why: '+data.why);
+    var href='mailto:huntlogic.support@gmail.com?subject='+encodeURIComponent('Hunt Logic Creators application')+'&body='+encodeURIComponent(lines.join('\n'));
+    msg.className='msg err';
+    msg.innerHTML='Applications are opening soon, and the form is not taking them quite yet. Nothing was lost: <a href="'+href+'">email your application instead</a> and we will read it the same way.';
+  }
+  function done(already){
+    var card=document.getElementById('formcard');
+    card.classList.add('done');
+    card.innerHTML='<h3 tabindex="-1" id="ok">'+(already?'We already have your application.':'Application received.')+'</h3><p>We will look at your channels and email you, usually within a week. Nothing is sent to you until then, and we will never add you to a marketing list for applying.</p>';
+    document.getElementById('ok').focus();
+  }
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();clear();
+    if(form.website.value)return; // bot filled the hidden field
+    var name=v('name'),email=v('email').toLowerCase(),state=v('state'),hunts=v('hunts'),why=v('why');
+    if(name.length<2)return bad(form.elements.name,'Add your name.');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return bad(form.elements.email,'Enter an email address, like you@example.com.');
+    if(state.length<2)return bad(form.elements.state,'Add the state or province where you hunt.');
+    if(hunts.length<2)return bad(form.elements.hunts,'Tell us what you hunt.');
+    var data={name:name,email:email,state:state,hunts:hunts,why:why},any=false;
+    CH.forEach(function(c){
+      var link=v(c);
+      if(link){any=true;data[c]=link}
+      var n=v('subs'+c[0].toUpperCase()+c.slice(1));
+      if(n!==''&&/^\d+$/.test(n)&&+n<=100000000&&link)data['subs'+c[0].toUpperCase()+c.slice(1)]=parseInt(n,10);
+    });
+    if(!any)return bad(form.elements.youtube,'Add at least one channel: YouTube, TikTok, Instagram or Facebook.');
+    if(why.length<10)return bad(form.elements.why,'Tell us a little about what you would show, a sentence or two is fine.');
+    if(!form.elements.agree.checked)return bad(form.elements.agree,'Please tick the box to confirm the disclosure rule.');
+    btn.disabled=true;msg.className='msg';msg.textContent='Sending…';
+    try{
+      var f={};
+      Object.keys(data).forEach(function(k){
+        f[k]=(typeof data[k]==='number')?{integerValue:String(data[k])}:{stringValue:data[k]};
+      });
+      f.source={stringValue:source};
+      f.at={timestampValue:new Date().toISOString()};
+      var id=await sha256(email);
+      var r=await fetch(BASE+'?documentId='+id+'&key='+KEY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:f})});
+      if(r.ok){done(false);return}
+      if(r.status===409){done(true);return}
+      throw new Error(r.status);
+    }catch(err){
+      btn.disabled=false;
+      fallback(data);
+    }
+  });
+})();
+</script>
+</body>
+</html>
