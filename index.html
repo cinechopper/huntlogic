@@ -183,5 +183,17 @@ footer a{color:var(--fog)}
   }
 })();
 </script>
+<script>
+/* Where did this visitor come from? gethuntlogic.com/?s=tiktok (also tiktok-bio, youtube, instagram...) tags the store links so
+   App Store Connect (Campaigns) and Google Play (acquisition) show downloads per source. No data leaves the page. */
+(function(){try{
+  var q=new URLSearchParams(location.search), s=(q.get("s")||q.get("utm_source")||"").toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,20);
+  if(!s) s="web";
+  document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a){
+    a.href="https://apps.apple.com/app/apple-store/id6812516337?pt=119012970&ct="+encodeURIComponent(s)+"&mt=8";});
+  document.querySelectorAll('a[href*="play.google.com/store/apps/details"]').forEach(function(a){
+    a.href="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic&referrer="+encodeURIComponent("utm_source="+s+"&utm_medium=web");});
+}catch(e){}})();
+</script>
 </body>
 </html>
