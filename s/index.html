@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- The stand rides in this page's #fragment, which browsers never send to any server. No
+     analytics, no scripts from anywhere else, and no referrer to the font host. -->
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>A shared stand · Hunt Logic</title>
+<meta name="description" content="A hunting buddy shared a stand with you. Open it in Hunt Logic to add it.">
+<meta property="og:title" content="A stand, shared from Hunt Logic">
+<meta property="og:description" content="Tap to add it in Hunt Logic: the spot, the walk in and the winds it hunts on.">
+<meta property="og:image" content="https://gethuntlogic.com/launch/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E1310">
+<link rel="icon" href="../img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#0E1310;--field:#1D2721;--ink:#ECE7DB;--fog:#A7B2A5;--blaze:#FF6A2B;--blaze-ink:#1A0C04;--ember:#E9B44C}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.55;font-optical-sizing:auto;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px}
+main{max-width:560px;margin:0 auto;padding:28px 16px 64px}
+.mark{display:flex;align-items:center;gap:10px;margin-bottom:28px;font-weight:600;font-size:17px;text-decoration:none}
+.mark img{width:30px;height:30px;border-radius:7px}
+.eyebrow{font-family:"VT323",ui-monospace,monospace;font-size:20px;color:var(--ember);margin:0 0 6px}
+h1{font-weight:700;font-size:clamp(32px,8.5vw,48px);line-height:1.05;letter-spacing:-.02em;margin:0 0 14px;font-variation-settings:"opsz" 72;overflow-wrap:anywhere}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 18px;padding:14px 16px;background:var(--field);border-radius:14px}
+.facts dt{font-family:"VT323",ui-monospace,monospace;font-size:19px;color:var(--fog);letter-spacing:.5px;text-transform:uppercase}
+.facts dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.notes{color:var(--fog);margin:0 0 22px;white-space:pre-line;overflow-wrap:anywhere}
+.card{background:var(--blaze);color:var(--blaze-ink);border-radius:14px;padding:18px 16px 16px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.card h2{font-size:23px;line-height:1.15;margin:0 0 8px;font-weight:700}
+.card p{margin:0 0 12px;font-size:17px;line-height:1.4}
+.btns{display:flex;flex-direction:column;gap:10px}
+.btn{display:flex;justify-content:center;align-items:center;gap:8px;font-size:19px;font-weight:700;padding:14px 16px;border-radius:10px;background:var(--blaze-ink);color:#FFF1E6;text-decoration:none}
+.btn:hover{background:#000}
+.btn.alt{background:transparent;color:var(--blaze-ink);border:2px solid var(--blaze-ink)}
+.logo{width:1.05em;height:1.05em;flex:none}
+.fine{font-size:15px;color:var(--fog);margin:18px 0 0}
+.bad h1{font-size:clamp(28px,7vw,40px)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <a class="mark" href="/"><img src="../img/icon.png" alt="">Hunt Logic</a>
+
+  <section id="stand" hidden>
+    <p class="eyebrow">A STAND, SHARED WITH YOU</p>
+    <h1 id="name"></h1>
+    <dl class="facts">
+      <dt>Type</dt><dd id="type"></dd>
+      <dt>Winds</dt><dd id="winds"></dd>
+      <dt id="sit-k">Sits</dt><dd id="sit"></dd>
+      <dt id="place-k">Place</dt><dd id="place"></dd>
+    </dl>
+    <p class="notes" id="notes" hidden></p>
+  </section>
+
+  <section id="bad" class="bad" hidden>
+    <p class="eyebrow">HUNT LOGIC</p>
+    <h1>This stand link didn't come through whole.</h1>
+    <p class="notes">It may have been cut off when it was copied. Ask your buddy to share the stand again from Hunt Logic.</p>
+  </section>
+
+  <div class="card">
+    <h2 id="cta-title">Add it in Hunt Logic</h2>
+    <p id="cta-copy">Have the app? Open the stand and tap Add. Don't have it yet? Get it free, then come back and tap Open.</p>
+    <div class="btns">
+      <a class="btn" id="open" href="huntlogic://stand">Open in Hunt Logic</a>
+      <a class="btn alt" href="https://apps.apple.com/us/app/hunt-logic/id6812516337"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>App Store</a>
+      <a class="btn alt" href="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zm13.3 13.9-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2h-.1zm.1-.1L13.6 12 3.6 22c.4.4 1 .4 1.7.1l11.7-6.5M17 8.4 5.3 1.8C4.6 1.4 4 1.5 3.6 1.9l10 10 3.4-3.5z"/></svg>Google Play</a>
+    </div>
+  </div>
+  <p class="fine">The stand travels inside the link itself and is read right here in your browser. It isn't sent to Hunt Logic or anyone else.</p>
+</main>
+<script>
+// The payload is the stand's JSON (Hunt Logic's StandShare Payload), raw-deflated and
+// base64url'd, in the fragment. Decoded here only to show what it is.
+(function () {
+  var COMPASS = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
+  var SIT = { "AM": "Mornings", "PM": "Evenings", "AM/PM": "Mornings and evenings" };
+  function $(id) { return document.getElementById(id); }
+  function bytes(b64url) {
+    var b = b64url.replace(/-/g, "+").replace(/_/g, "/");
+    while (b.length % 4) b += "=";
+    var s = atob(b), out = new Uint8Array(s.length);
+    for (var i = 0; i < s.length; i++) out[i] = s.charCodeAt(i);
+    return out;
+  }
+  async function inflate(data) {
+    var stream = new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+    return await new Response(stream).text();
+  }
+  function show(stand) {
+    $("name").textContent = stand.name || "A stand";
+    $("type").textContent = stand.type || "Hang-on";
+    var winds = (stand.huntableWinds || []).slice().sort(function (a, b) {
+      return COMPASS.indexOf(a) - COMPASS.indexOf(b);
+    });
+    $("winds").textContent = winds.length ? winds.join(" · ") : "Any wind (not set)";
+    $("sit").textContent = SIT[stand.sit || "AM/PM"] || stand.sit;
+    if (stand.placeName) $("place").textContent = stand.placeName;
+    else { $("place").hidden = true; $("place-k").hidden = true; }
+    if (stand.notes) { $("notes").textContent = stand.notes; $("notes").hidden = false; }
+    document.title = (stand.name || "A stand") + " · Hunt Logic";
+    $("stand").hidden = false;
+    $("bad").hidden = true;
+  }
+  function broken() {
+    $("stand").hidden = true;
+    $("bad").hidden = false;
+    $("cta-title").textContent = "Get Hunt Logic";
+    $("cta-copy").textContent = "Free on iPhone and Android: wind, stands and when to leave.";
+    $("open").hidden = true;
+  }
+  async function render() {
+    var payload = location.hash.replace(/^#/, "");
+    $("open").href = "huntlogic://stand" + (payload ? "#" + payload : "");
+    if (!payload) return broken();
+    try {
+      var p = JSON.parse(await inflate(bytes(payload)));
+      if (!p || !p.stand || typeof p.stand.latitude !== "number") return broken();
+      show(p.stand);
+    } catch (e) { broken(); }
+  }
+  if (typeof DecompressionStream === "undefined") {
+    // Older browser: the stand still opens in the app; it just can't be previewed here.
+    var payload = location.hash.replace(/^#/, "");
+    $("open").href = "huntlogic://stand" + (payload ? "#" + payload : "");
+    $("cta-copy").textContent = "Open it in Hunt Logic to see the stand and add it.";
+  } else {
+    render();
+    window.addEventListener("hashchange", render);
+  }
+})();
+</script>
+</body>
+</html>

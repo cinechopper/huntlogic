@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.cinechopper.huntlogic",
+      "sha256_cert_fingerprints": [
+        "9C:65:BB:E2:0C:39:71:9D:E5:B3:8B:38:4D:05:AB:89:D4:87:3D:41:2A:3F:71:C8:29:79:F1:DC:08:F3:33:C8",
+        "71:D9:F1:8E:E5:DE:49:D3:BE:B8:69:46:26:29:52:D2:95:CB:24:11:93:60:F6:66:EB:39:46:67:FF:12:A6:BA"
+      ]
+    }
+  }
+]

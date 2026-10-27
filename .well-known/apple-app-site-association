@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "4L825B43N6.com.cinechopper.huntlogic",
+        "appIDs": ["4L825B43N6.com.cinechopper.huntlogic"],
+        "paths": ["/s", "/s/", "/s/*"],
+        "components": [
+          { "/": "/s", "comment": "A shared stand: https://gethuntlogic.com/s#<stand>" },
+          { "/": "/s/*", "comment": "A shared stand: https://gethuntlogic.com/s/#<stand>" }
+        ]
+      }
+    ]
+  }
+}
