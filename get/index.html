@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get Hunt Logic</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Hunt Logic: deer hunting planner">
+<meta property="og:description" content="Free on iPhone and Android.">
+<style>
+:root{--bg:#f6f3ec;--ink:#1d1d1b;--muted:#5c5a55;--accent:#d2601a}
+@media (prefers-color-scheme:dark){:root{--bg:#141412;--ink:#f2efe8;--muted:#a9a59b}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:0 16px}
+h1{font-size:24px;margin:0 0 6px}p{color:var(--muted);margin:0 0 22px}
+a.btn{display:block;margin:10px auto;max-width:280px;padding:14px 18px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+a.alt{background:transparent;color:var(--ink);border:1px solid var(--muted)}
+</style></head>
+<body><main>
+<h1>Opening Hunt Logic…</h1>
+<p>Free deer hunting planner for iPhone and Android.</p>
+<a class="btn" id="ios" href="https://apps.apple.com/app/apple-store/id6812516337?pt=119012970&ct=web&mt=8">Download on the App Store</a>
+<a class="btn alt" id="android" href="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic&referrer=utm_source%3Dweb%26utm_medium%3Dweb">Get it on Google Play</a>
+<p style="margin-top:18px"><a href="/" style="color:var(--muted)">More about Hunt Logic</a></p>
+</main>
+<script>
+/* Ad landing link: gethuntlogic.com/get/?s=meta-us sends phones straight to their store, tagged by source
+   so App Store Connect (Campaigns) and Google Play (acquisition) count installs per ad set.
+   Desktop and unknown devices see both buttons. Nothing is sent anywhere from this page. */
+(function(){try{
+  var q=new URLSearchParams(location.search),
+      s=(q.get("s")||q.get("utm_source")||"web").toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,20)||"web";
+  var ios="https://apps.apple.com/app/apple-store/id6812516337?pt=119012970&ct="+encodeURIComponent(s)+"&mt=8";
+  var play="https://play.google.com/store/apps/details?id=com.cinechopper.huntlogic&referrer="+encodeURIComponent("utm_source="+s+"&utm_medium=paid");
+  document.getElementById("ios").href=ios; document.getElementById("android").href=play;
+  var ua=navigator.userAgent||"";
+  var isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
+  if(isIOS) location.replace(ios); else if(/Android/i.test(ua)) location.replace(play);
+}catch(e){}})();
+</script>
+</body></html>
