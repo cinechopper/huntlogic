@@ -4,11 +4,34 @@
     "details": [
       {
         "appID": "4L825B43N6.com.cinechopper.huntlogic",
-        "appIDs": ["4L825B43N6.com.cinechopper.huntlogic"],
-        "paths": ["/s", "/s/", "/s/*"],
+        "appIDs": [
+          "4L825B43N6.com.cinechopper.huntlogic"
+        ],
+        "paths": [
+          "/s",
+          "/s/",
+          "/s/*",
+          "/p",
+          "/p/",
+          "/p/*"
+        ],
         "components": [
-          { "/": "/s", "comment": "A shared stand: https://gethuntlogic.com/s#<stand>" },
-          { "/": "/s/*", "comment": "A shared stand: https://gethuntlogic.com/s/#<stand>" }
+          {
+            "/": "/s",
+            "comment": "A shared stand: https://gethuntlogic.com/s#<stand>"
+          },
+          {
+            "/": "/s/*",
+            "comment": "A shared stand: https://gethuntlogic.com/s/#<stand>"
+          },
+          {
+            "/": "/p",
+            "comment": "A Hunt Party invite: https://gethuntlogic.com/p#<code>"
+          },
+          {
+            "/": "/p/*",
+            "comment": "A Hunt Party invite: https://gethuntlogic.com/p/#<code>"
+          }
         ]
       }
     ]
