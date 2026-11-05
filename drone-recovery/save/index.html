@@ -3,47 +3,138 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0e1310">
-  <meta name="description" content="Save Hunt Logic Drone Deer Recovery to your phone. Serving Northern Missouri. Call (816) 343-8512.">
+  <meta name="theme-color" content="#0b0907">
+  <meta name="description" content="Save Hunt Logic Drone Deer Recovery to your phone before your next hunt. Thermal drone deer recovery in North Missouri and South Iowa. Call (816) 343-8512.">
   <title>Save Hunt Logic Drone Deer Recovery</title>
+  <meta property="og:title" content="Save my number before you need it">
+  <meta property="og:description" content="Hunt Logic Drone Deer Recovery · Thermal drone · FAA certified pilot · North MO & South IA">
+  <meta property="og:image" content="https://gethuntlogic.com/drone-recovery/save/assets/save-my-number.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800;1,900&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root{color-scheme:dark;--bg:#0e1310;--ink:#ece7db;--dim:#a8b4aa;--orange:#ff6a2b}
-    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    main{width:min(100%,520px);margin:auto;padding:32px 24px 36px}
-    .brand{display:flex;align-items:center;gap:14px;margin-bottom:28px}.brand img{width:64px;height:64px;border-radius:15px}.brand strong{display:block;font-size:19px;letter-spacing:.06em}.brand span{font-size:14px;color:var(--dim)}
-    .area{color:var(--orange);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px}
-    h1{font-size:clamp(36px,9vw,48px);line-height:1.05;letter-spacing:-.035em;margin:0 0 18px;font-weight:850}
-    .intro{margin:0 0 25px;color:var(--dim);max-width:40ch}
-    .action{display:flex;align-items:center;justify-content:center;min-height:62px;padding:16px;border-radius:14px;text-decoration:none;font-weight:800;font-size:18px;text-align:center}
-    .save{background:var(--orange);color:#0e1310;margin-bottom:12px}.call{border:1px solid #405047;color:var(--ink)}
-    a:focus-visible,summary:focus-visible{outline:3px solid #ece7db;outline-offset:4px}.action:hover{filter:brightness(1.08)}
-    .how{font-size:13px;color:var(--dim);margin:15px 0 25px}
-    .photo{width:100%;height:210px;object-fit:cover;object-position:center;border-radius:16px;display:block;margin:0 0 24px}
-    details{border-top:1px solid #2e3b33;padding-top:18px;font-size:14px;color:var(--dim)}summary{cursor:pointer;color:var(--ink);font-weight:650}details p{margin:14px 0}details strong{color:var(--ink)}
-    footer{font-size:12px;color:var(--dim);margin-top:25px}
-    @media(max-width:360px){main{padding:24px 18px}.brand strong{font-size:17px}.call{font-size:16px}}
+    :root{color-scheme:dark;--bg:#0b0907;--card:#16110c;--ink:#f3ecdf;--dim:#c4b6a3;--orange:#f2661c;--orange2:#ff8a3d;--line:#3a2a1c}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,-apple-system,sans-serif}
+    .cond{font-family:"Barlow Condensed",Impact,sans-serif;text-transform:uppercase}
+    main{width:min(100%,560px);margin:auto}
+
+    /* Hero: autumn photo, dark fade, big italic headline like the ads */
+    .hero{position:relative;padding:22px 20px 26px;background:
+      linear-gradient(180deg,rgba(11,9,7,.55) 0%,rgba(11,9,7,.15) 30%,rgba(11,9,7,.55) 62%,var(--bg) 100%),
+      linear-gradient(0deg,rgba(242,102,28,.22),rgba(242,102,28,.22)),
+      url(assets/pilot-screen.jpg) center 40%/cover no-repeat;min-height:520px;display:flex;flex-direction:column}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:52px;height:52px;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+    .brand b{display:block;font:italic 900 26px/0.95 "Barlow Condensed",Impact,sans-serif;letter-spacing:.01em}
+    .brand span{display:block;font:600 13px/1.2 "Barlow Condensed",sans-serif;letter-spacing:.14em;color:var(--orange2);text-transform:uppercase}
+    .hero-text{margin-top:auto}
+    h1{margin:0;font:italic 900 clamp(46px,13vw,68px)/.9 "Barlow Condensed",Impact,sans-serif;text-transform:uppercase;letter-spacing:-.005em;text-shadow:0 3px 18px rgba(0,0,0,.65)}
+    h1 em{font-style:inherit;color:var(--orange);display:block}
+    .brush{display:inline-block;margin-top:14px;padding:6px 16px 7px;background:var(--orange);color:#140c05;
+      font:italic 800 19px/1.1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.02em;
+      clip-path:polygon(1.5% 8%,99% 0,100% 88%,2% 100%,0 55%)}
+
+    .actions{padding:4px 20px 6px}
+    .action{display:flex;align-items:center;justify-content:center;gap:10px;min-height:64px;padding:14px 16px;border-radius:14px;text-decoration:none;
+      font:800 23px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em}
+    .save{background:linear-gradient(180deg,var(--orange2),var(--orange));color:#140c05;box-shadow:0 8px 24px rgba(242,102,28,.35);margin-bottom:12px}
+    .call{background:#1d1610;border:2px solid var(--orange);color:var(--ink)}
+    .call small{font:600 15px Barlow,sans-serif;text-transform:none;letter-spacing:0;color:var(--dim)}
+    .action svg{width:24px;height:24px;flex:none}
+    a:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+    .action:active{transform:translateY(1px)}
+    .how{font-size:13px;color:var(--dim);margin:12px 2px 0;text-align:center}
+
+    section{padding:30px 20px 0}
+    h2{margin:0 0 6px;font:italic 900 34px/1 "Barlow Condensed",Impact,sans-serif;text-transform:uppercase}
+    h2 span{color:var(--orange)}
+    .rule{height:4px;width:110px;background:var(--orange);border-radius:2px;margin:10px 0 18px;transform:skewX(-20deg)}
+    .lead{color:var(--dim);margin:0 0 18px}
+    .steps{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+    .steps li{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .steps b.n{flex:none;width:36px;height:36px;border-radius:50%;background:var(--orange);color:#140c05;display:grid;place-items:center;font:900 20px "Barlow Condensed",sans-serif}
+    .steps strong{display:block;font:800 19px/1.15 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.02em}
+    .steps p{margin:3px 0 0;color:var(--dim);font-size:14.5px}
+
+    .gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:10px;margin-top:18px}
+    .gallery figure{margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+    .gallery img{width:100%;height:100%;object-fit:cover;display:block}
+    .gallery .tall{grid-row:span 2}
+    .gallery figcaption{position:absolute;left:8px;bottom:8px;background:rgba(11,9,7,.78);padding:3px 9px;border-radius:6px;
+      font:800 13px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--orange2)}
+
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .badges span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 14px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em}
+
+    .poster{margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+    .poster img{width:100%;display:block}
+
+    details{margin:26px 20px 0;border-top:1px solid var(--line);padding-top:16px;font-size:14px;color:var(--dim)}
+    summary{cursor:pointer;color:var(--ink);font:800 18px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em}
+    details p{margin:12px 0}details strong{color:var(--ink)}
+    .sticky{position:sticky;bottom:0;padding:12px 20px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(11,9,7,0),var(--bg) 35%);margin-top:20px}
+    .sticky .action{margin:0}
+    footer{font-size:12.5px;color:var(--dim);padding:6px 20px 28px;text-align:center}
+    footer a{color:var(--orange2)}
+    @media(max-width:360px){.action{font-size:20px}.hero{min-height:470px}}
   </style>
 </head>
 <body>
   <main>
-    <header class="brand">
-      <img src="assets/hunt-logic-logo.png" alt="Hunt Logic deer-brain logo" width="64" height="64">
-      <div><strong>HUNT LOGIC</strong><span>Drone Deer Recovery</span></div>
+    <header class="hero">
+      <div class="brand">
+        <img src="assets/hunt-logic-logo.png" alt="Hunt Logic logo" width="52" height="52">
+        <div><b>HUNT LOGIC</b><span>Drone Deer Recovery</span></div>
+      </div>
+      <div class="hero-text">
+        <h1>Save my number <em>before you need it</em></h1>
+        <div class="brush">Thermal drone · FAA certified pilot</div>
+      </div>
     </header>
-    <p class="area">Northern Missouri</p>
-    <h1>Save our number<br>before your next hunt.</h1>
-    <p class="intro">Keep Hunt Logic in your contacts so you have our number when you need recovery help.</p>
-    <a class="action save" href="Hunt-Logic-Drone-Recovery.vcf" download="Hunt-Logic-Drone-Recovery.vcf">Save Contact</a>
-    <a class="action call" href="tel:+18163438512">Call (816) 343-8512</a>
-    <p class="how">Download the contact card, then open or import it on your phone to save our number.</p>
-    <img class="photo" src="assets/recovery-drone.jpg" alt="Hunt Logic's recovery drone in flight" width="4032" height="3024">
+
+    <div class="actions">
+      <a class="action save" href="Hunt-Logic-Drone-Recovery.vcf" download="Hunt-Logic-Drone-Recovery.vcf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+        Save contact
+      </a>
+      <a class="action call" href="tel:+18163438512">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        Call <small>(816) 343-8512</small>
+      </a>
+      <p class="how">Tap <b>Save contact</b>, then <b>Add to Contacts</b>. One tap and we're in your phone.</p>
+    </div>
+
+    <section>
+      <h2>Lost your <span>deer?</span></h2>
+      <div class="rule"></div>
+      <p class="lead">Our thermal drone searches timber, CRP and standing corn from above — often finding your deer in minutes, day or night, without pushing it deeper.</p>
+      <ol class="steps">
+        <li><b class="n">1</b><div><strong>Call or text us</strong><p>Tell us where you were and the last sign you saw. Back off and wait.</p></div></li>
+        <li><b class="n">2</b><div><strong>We fly the area</strong><p>The thermal camera spots body heat through cover that boots and lights miss.</p></div></li>
+        <li><b class="n">3</b><div><strong>We walk you to it</strong><p>We guide you straight in, with landowner permission and Missouri rules followed.</p></div></li>
+      </ol>
+
+      <div class="gallery">
+        <figure class="tall"><img src="assets/pilot.jpg" alt="Hunt Logic pilot with the thermal drone" loading="lazy"><figcaption>FAA Part 107 pilot</figcaption></figure>
+        <figure><img src="assets/thermal-feed.jpg" alt="Thermal camera view from the drone" loading="lazy"><figcaption>Thermal view</figcaption></figure>
+        <figure><img src="assets/drone-wide.jpg" alt="Recovery drone in flight" loading="lazy"><figcaption>In the air fast</figcaption></figure>
+      </div>
+
+      <div class="badges"><span>Day or night</span><span>North MO</span><span>South IA</span><span>Flying since 2012</span></div>
+
+      <div class="poster"><img src="assets/lost-your-deer.jpg" alt="Lost your deer? Thermal drone deer recovery. Call (816) 343-8512" loading="lazy"></div>
+    </section>
+
     <details>
-      <summary>Help saving the contact</summary>
-      <p><strong>iPhone:</strong> Open the downloaded contact card. If it does not offer a contact-import option, share the file through Mail or Messages and tap the attachment there.</p>
-      <p><strong>Android:</strong> Open the downloaded card. You can also open Google Contacts, tap Organize, then Import from file, and select the VCF file.</p>
-      <p>If Facebook's browser prevents opening the file, open this page in your usual phone browser and try again.</p>
+      <summary>Trouble saving the contact?</summary>
+      <p><strong>iPhone:</strong> After tapping Save contact, tap the card, then <em>Add to Contacts</em>. Inside Facebook, tap the ••• menu and choose <em>Open in browser</em> first if nothing happens.</p>
+      <p><strong>Android:</strong> Open the downloaded card from the notification, or open Contacts → Fix &amp; manage → Import from file.</p>
     </details>
-    <footer>Hunt Logic Drone Deer Recovery · Northern Missouri · <a href="/recovery/" style="color:inherit">How our drone recovery works</a></footer>
+
+    <div class="sticky"><a class="action call" href="tel:+18163438512" aria-label="Call Hunt Logic Drone Deer Recovery">Call now <small>(816) 343-8512</small></a></div>
+
+    <footer>Hunt Logic Drone Deer Recovery · North Missouri &amp; South Iowa · <a href="/recovery/">How drone recovery works</a></footer>
   </main>
 </body>
 </html>
